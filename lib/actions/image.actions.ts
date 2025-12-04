@@ -35,7 +35,8 @@ export async function addImage({ image, userId, path }: AddImageParams) {
 
     return JSON.parse(JSON.stringify(newImage));
   } catch (error) {
-    handleError(error)
+    console.error("Error adding image:", error);
+    throw error;
   }
 }
 
@@ -60,7 +61,8 @@ export async function updateImage({ image, userId, path }: UpdateImageParams) {
 
     return JSON.parse(JSON.stringify(updatedImage));
   } catch (error) {
-    handleError(error)
+    console.error("Error updating image:", error);
+    throw error;
   }
 }
 
@@ -71,7 +73,8 @@ export async function deleteImage(imageId: string) {
 
     await Image.findByIdAndDelete(imageId);
   } catch (error) {
-    handleError(error)
+    console.error("Error deleting image:", error);
+    throw error;
   } finally{
     redirect('/')
   }
@@ -88,7 +91,8 @@ export async function getImageById(imageId: string) {
 
     return JSON.parse(JSON.stringify(image));
   } catch (error) {
-    handleError(error)
+    console.error("Error fetching image:", error);
+    throw error;
   }
 }
 
@@ -146,7 +150,8 @@ export async function getAllImages({ limit = 9, page = 1, searchQuery = '' }: {
       savedImages,
     }
   } catch (error) {
-    handleError(error)
+    console.error("Error fetching all images:", error);
+    throw error;
   }
 }
 
@@ -177,6 +182,7 @@ export async function getUserImages({
       totalPages: Math.ceil(totalImages / limit),
     };
   } catch (error) {
-    handleError(error);
+    console.error("Error fetching user images:", error);
+    throw error;
   }
 }

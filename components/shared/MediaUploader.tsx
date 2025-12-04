@@ -5,6 +5,7 @@ import { dataUrl, getImageSize } from "@/lib/utils";
 import { CldImage, CldUploadWidget } from "next-cloudinary"
 import { PlaceholderValue } from "next/dist/shared/lib/get-img-props";
 import Image from "next/image";
+import { useRef } from "react";
 
 type MediaUploaderProps = {
   onValueChange: (value: string) => void;
@@ -22,6 +23,7 @@ const MediaUploader = ({
   type
 }: MediaUploaderProps) => {
   const { toast } = useToast()
+  const uploadWidgetRef = useRef<any>(null)
 
   const onUploadSuccessHandler = (result: any) => {
     setImage((prevState: any) => ({
@@ -45,15 +47,22 @@ const MediaUploader = ({
   const onUploadErrorHandler = () => {
     toast({
       title: 'Something went wrong while uploading',
-      description: 'Please try again',
+      description: 'Please check your upload preset settings in Cloudinary',
       duration: 5000,
       className: 'error-toast' 
     })
   }
 
+  const handleClick = () => {
+    if (uploadWidgetRef.current?.open) {
+      uploadWidgetRef.current.open()
+    }
+  }
+
   return (
     <CldUploadWidget
-      uploadPreset="jsm_imaginify"
+      ref={uploadWidgetRef}
+      uploadPreset="khizo_ai"
       options={{
         multiple: false,
         resourceType: "image",
@@ -82,7 +91,7 @@ const MediaUploader = ({
               </div>
             </>
           ): (
-            <div className="media-uploader_cta" onClick={() => open()}>
+            <div className="media-uploader_cta" onClick={() => open ? open() : handleClick()}>
               <div className="media-uploader_cta-image">
                 <Image 
                   src="/assets/icons/add.svg"
