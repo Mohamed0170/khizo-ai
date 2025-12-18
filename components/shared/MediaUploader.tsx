@@ -5,7 +5,6 @@ import { dataUrl, getImageSize } from "@/lib/utils";
 import { CldImage, CldUploadWidget } from "next-cloudinary"
 import { PlaceholderValue } from "next/dist/shared/lib/get-img-props";
 import Image from "next/image";
-import { useRef } from "react";
 
 type MediaUploaderProps = {
   onValueChange: (value: string) => void;
@@ -23,7 +22,6 @@ const MediaUploader = ({
   type
 }: MediaUploaderProps) => {
   const { toast } = useToast()
-  const uploadWidgetRef = useRef<any>(null)
 
   const onUploadSuccessHandler = (result: any) => {
     setImage((prevState: any) => ({
@@ -53,15 +51,8 @@ const MediaUploader = ({
     })
   }
 
-  const handleClick = () => {
-    if (uploadWidgetRef.current?.open) {
-      uploadWidgetRef.current.open()
-    }
-  }
-
   return (
     <CldUploadWidget
-      ref={uploadWidgetRef}
       uploadPreset="khizo_ai"
       options={{
         multiple: false,
@@ -91,7 +82,7 @@ const MediaUploader = ({
               </div>
             </>
           ): (
-            <div className="media-uploader_cta" onClick={() => open ? open() : handleClick()}>
+            <div className="media-uploader_cta" onClick={() => open()}>
               <div className="media-uploader_cta-image">
                 <Image 
                   src="/assets/icons/add.svg"
