@@ -26,6 +26,6 @@ const TransactionSchema = new Schema({
   },
 });
 
-const Transaction = models?.Transaction || model("Transaction", TransactionSchema);
+const Transaction = (models.Transaction || model("Transaction", TransactionSchema)) as any;
 
 export default Transaction;
