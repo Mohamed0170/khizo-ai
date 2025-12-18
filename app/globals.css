@@ -323,6 +323,23 @@
     @apply h-full flex-col justify-between md:flex md:gap-4;
   }
 
+  .sidebar-scroll-container {
+    @apply flex-1 overflow-y-auto pr-2;
+  }
+
+  /* Scrollbar styling */
+  .sidebar-scroll-container::-webkit-scrollbar {
+    @apply w-2;
+  }
+
+  .sidebar-scroll-container::-webkit-scrollbar-track {
+    @apply bg-gray-100 rounded-full;
+  }
+
+  .sidebar-scroll-container::-webkit-scrollbar-thumb {
+    @apply bg-purple-400 rounded-full hover:bg-purple-500 transition-colors;
+  }
+
   .sidebar-nav_elements {
     @apply hidden w-full flex-col items-start gap-2 md:flex;
   }
