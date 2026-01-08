@@ -7,6 +7,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Button } from "../ui/button"
+import Logo from "./Logo"
 
 const MobileNav = () => {
   const pathname = usePathname();
@@ -14,12 +15,8 @@ const MobileNav = () => {
   return (
     <header className="header">
       <Link href="/" className="flex items-center gap-2 md:py-2">
-        <Image
-          src="/assets/images/logo-text.svg"
-          alt="logo"
-          width={180}
-          height={28}
-        />
+        <Logo className="w-7 h-7" />
+        <span className="font-bold text-lg tracking-tight text-indigo-600">Khizo AI</span>
       </Link>
 
       <nav className="flex gap-2">
@@ -36,14 +33,12 @@ const MobileNav = () => {
                 className="cursor-pointer"
               />
             </SheetTrigger>
-            <SheetContent className="sheet-content sm:w-64">
+            <SheetContent className="sheet-content sm:w-64 overflow-hidden">
               <>
-                <Image 
-                  src="/assets/images/logo-text.svg"
-                  alt="logo"
-                  width={152}
-                  height={23}
-                />
+                <div className="flex items-center gap-2">
+                  <Logo className="w-7 h-7" />
+                  <span className="font-bold text-lg tracking-tight text-indigo-600">Khizo AI</span>
+                </div>
 
               <ul className="header-nav_elements">
               {navLinks.map((link) => {

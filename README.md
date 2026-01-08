@@ -1,8 +1,10 @@
 <div align="center">
   <br />
-    <a href="https://youtu.be/Ahwoks_dawU?feature=shared" target="_blank">
-      <img src="https://github.com/sujatagunale/EasyRead/assets/151519281/daf9e91b-6342-4e9a-9361-8dc2bd01ce64" alt="Project Banner">
-    </a>
+  
+  # 🎨 Khizo AI
+  
+  ### Advanced AI Platform for Image Processing and Enhancement
+  
   <br />
 
   <div>
@@ -11,53 +13,97 @@
     <img src="https://img.shields.io/badge/-Stripe-black?style=for-the-badge&logoColor=white&logo=stripe&color=008CDD" alt="stripe" />
     <img src="https://img.shields.io/badge/-MongoDB-black?style=for-the-badge&logoColor=white&logo=mongodb&color=47A248" alt="mongodb" />
     <img src="https://img.shields.io/badge/-Tailwind_CSS-black?style=for-the-badge&logoColor=white&logo=tailwindcss&color=06B6D4" alt="tailwindcss" />
+    <img src="https://img.shields.io/badge/-Cloudinary-black?style=for-the-badge&logoColor=white&logo=cloudinary&color=3448C5" alt="cloudinary" />
   </div>
 
-  <h3 align="center">Khizo AI</h3>
+  <br />
 
+</div>
+
+## 📋 Table of Contents
+
+- [🌟 About](#about)
+- [✨ Features](#features)
+- [🛠️ Tech Stack](#tech-stack)
+- [🤸 Quick Start](#quick-start)
+- [📁 Project Structure](#structure)
+- [🔗 Important Links](#links)
+
+## <a name="about">🌟 About</a>
+
+**Khizo AI** is an advanced SaaS platform that uses artificial intelligence to process and enhance images professionally. The platform provides a powerful set of tools that enable users to transform their images easily with high quality results.
+
+## <a name="features">✨ Features</a>
+
+🔹 **Image Restore** - Fix old and damaged images, remove noise and imperfections
+
+🔹 **Generative Fill** - Expand image dimensions using AI Outpainting technology
+
+🔹 **Object Remove** - Identify and remove unwanted elements from images
+
+🔹 **Object Recolor** - Change colors of specific elements in the image
+
+🔹 **Background Remove** - Automatically remove image backgrounds using AI
+
+🔹 **Credits System** - Flexible payment system via Stripe to purchase credits
+
+🔹 **Secure Authentication** - Safe login via Clerk
+
+🔹 **Advanced Search** - Search through saved images easily
+
+## <a name="tech-stack">🛠️ Tech Stack</a>
+
+| Technology | Purpose |
+|------------|----------|
+| **Next.js 14** | Core Framework |
+| **TypeScript** | Programming Language |
+| **Tailwind CSS** | Design & UI |
+| **Cloudinary AI** | AI Image Processing |
+| **MongoDB** | Database |
+| **Clerk** | Authentication & User Management |
+| **Stripe** | Payment Processing |
+| **Shadcn/ui** | UI Components |
 
 ## <a name="quick-start">🤸 Quick Start</a>
 
-Follow these steps to set up the project locally on your machine.
+Follow these steps to set up the project locally:
 
-**Prerequisites**
+### Prerequisites
 
 Make sure you have the following installed on your machine:
 
 - [Git](https://git-scm.com/)
-- [Node.js](https://nodejs.org/en)
-- [npm](https://www.npmjs.com/) (Node Package Manager)
+- [Node.js](https://nodejs.org/en) (Version 18 or higher)
+- [npm](https://www.npmjs.com/) or yarn
 
-**Cloning the Repository**
+### Clone the Repository
 
 ```bash
 git clone https://github.com/Mohamed0170/khizo-ai.git
 cd khizo-ai
 ```
 
-**Installation**
-
-Install the project dependencies using npm:
+### Install Dependencies
 
 ```bash
-npm run dev
+npm install
 ```
 
-**Set Up Environment Variables**
+### Set Up Environment Variables
 
-Create a new file named `.env.local` in the root of your project and add the following content:
+Create a `.env.local` file in the root directory and add the following variables:
 
 ```env
 #NEXT
-NEXT_PUBLIC_SERVER_URL=
+NEXT_PUBLIC_SERVER_URL=http://localhost:3000
 
 #MONGODB
-MONGODB_URL=
+MONGODB_URL=your_mongodb_connection_string
 
 #CLERK
-NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
-CLERK_SECRET_KEY=
-WEBHOOK_SECRET=
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
+CLERK_SECRET_KEY=your_clerk_secret_key
+WEBHOOK_SECRET=your_clerk_webhook_secret
 
 NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
 NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
@@ -65,19 +111,23 @@ NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/
 NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/
 
 #CLOUDINARY
-NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=
-CLOUDINARY_API_KEY=
-CLOUDINARY_API_SECRET=
+NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=your_cloud_name
+CLOUDINARY_API_KEY=your_api_key
+CLOUDINARY_API_SECRET=your_api_secret
 
 #STRIPE
-STRIPE_SECRET_KEY=
-STRIPE_WEBHOOK_SECRET=
-NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=
+STRIPE_SECRET_KEY=your_stripe_secret_key
+STRIPE_WEBHOOK_SECRET=your_stripe_webhook_secret
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=your_stripe_publishable_key
 ```
 
-Replace the placeholder values with your actual respective account credentials. You can obtain these credentials by signing up on the [Clerk](https://clerk.com/), [MongoDB](https://www.mongodb.com/), [Cloudinary](https://cloudinary.com/) and [Stripe](https://stripe.com)
+Get API keys from:
+- [Clerk](https://clerk.com/) - For authentication
+- [MongoDB Atlas](https://www.mongodb.com/) - For database
+- [Cloudinary](https://cloudinary.com/) - For image processing
+- [Stripe](https://stripe.com) - For payments
 
-**Running the Project**
+### Run the Project
 
 ```bash
 npm run dev
@@ -85,7 +135,25 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) in your browser to view the project.
 
-## <a name="snippets">🕸️ Snippets</a>
+## <a name="structure">📁 Project Structure</a>
+
+```
+khizo-ai/
+├── app/                          # Application pages
+│   ├── (auth)/                   # Authentication pages
+│   ├── (landing)/                # Landing page
+│   └── (root)/                   # Main app pages
+├── components/                   # React components
+│   ├── shared/                   # Shared components
+│   └── ui/                       # Shadcn UI components
+├── lib/                          # Helper functions
+│   ├── actions/                  # Server actions
+│   └── database/                 # Database models
+├── public/                       # Static files
+└── types/                        # TypeScript definitions
+```
+
+## <a name="snippets">🕸️ Code Examples</a>
 
 <details>
 <summary><code>tailwind.config.ts</code></summary>
@@ -2443,29 +2511,36 @@ export default Profile;
 </details>
 
 
-## <a name="links">🔗 Links</a>
+## <a name="links">🔗 Important Links</a>
 
-Public Assets used in the project can be found [here](https://drive.google.com/file/d/1uv1zyCjbYBQE9qnwh2snwO0NBgoop5gz/view?usp=sharing)
+Public assets and resources used in the project can be found [here](https://drive.google.com/file/d/1uv1zyCjbYBQE9qnwh2snwO0NBgoop5gz/view?usp=sharing)
 
-## <a name="more">🚀 More</a>
+## <a name="more">🚀 More Information</a>
 
-**Advance your skills with Next.js 14 Pro Course**
+### 🌐 Continuous Development
 
-Enjoyed creating this project? Dive deeper into our PRO courses for a richer learning adventure. They're packed with detailed explanations, cool features, and exercises to boost your skills. Give it a go!
+This project is under continuous development. We work consistently on:
+- Improving performance and stability
+- Adding new features
+- Enhancing user experience
 
-<a href="https://jsmastery.pro/next14" target="_blank">
-<img src="https://github.com/sujatagunale/EasyRead/assets/151519281/557837ce-f612-4530-ab24-189e75133c71" alt="Project Banner">
-</a>
+### 📞 Contact & Support
 
-<br />
-<br />
+For inquiries or to report issues, you can:
+- Open an Issue on GitHub
+- Contact us via email
+- Follow our projects on GitHub
 
-**Accelerate your professional journey with the Expert Training program**
+### 📜 License
 
-And if you're hungry for more than just a course and want to understand how we learn and tackle tech challenges, hop into our personalized masterclass. We cover best practices, different web skills, and offer mentorship to boost your confidence. Let's learn and grow together!
+This project is licensed under the MIT License - see the LICENSE file for details
 
-<a href="https://www.jsmastery.pro/masterclass" target="_blank">
-<img src="https://github.com/sujatagunale/EasyRead/assets/151519281/fed352ad-f27b-400d-9b8f-c7fe628acb84" alt="Project Banner">
-</a>
+---
 
-#
+<div align="center">
+  
+  **Made with ❤️ by Khizo AI Team**
+  
+  ⭐ If you like this project, don't forget to add a star! ⭐
+  
+</div>
