@@ -14,8 +14,8 @@ const Sidebar = () => {
   return (
     <aside className="sidebar">
       <div className="flex size-full flex-col gap-4">
-        <Link href="/" className="sidebar-logo">
-          <Logo className="w-8 h-8" />
+        <Link href="/dashboard" className="sidebar-logo">
+          <Logo className="w-8 h-8 md:w-9 md:h-9" />
           <span className="font-bold text-xl tracking-tight text-indigo-600">Khizo AI</span>
         </Link>
 
