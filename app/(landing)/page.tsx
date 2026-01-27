@@ -167,7 +167,7 @@ export default function LandingPage() {
                 Ready to transform your workflow?
               </h2>
               <p className="text-base md:text-lg text-indigo-100 mb-8 md:mb-10 max-w-2xl mx-auto relative z-10 px-4">
-                Join us who using Khizo AI to produce stunning visuals in record time.
+                Join those who using Khizo AI to produce stunning visuals in record time.
               </p>
               <Link 
                 href={APP_URL}

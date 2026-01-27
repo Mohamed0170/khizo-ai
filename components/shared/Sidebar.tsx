@@ -7,6 +7,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Button } from '../ui/button'
 import Logo from './Logo'
+import { ThemeToggle } from './ThemeToggle'
 
 const Sidebar = () => {
   const pathname = usePathname();
@@ -16,7 +17,7 @@ const Sidebar = () => {
       <div className="flex size-full flex-col gap-4">
         <Link href="/dashboard" className="sidebar-logo">
           <Logo className="w-8 h-8 md:w-9 md:h-9" />
-          <span className="font-bold text-xl tracking-tight text-indigo-600">Khizo AI</span>
+          <span className="font-bold text-xl tracking-tight text-indigo-600 dark:text-indigo-400">Khizo AI</span>
         </Link>
 
         <nav className="sidebar-nav">
@@ -28,7 +29,7 @@ const Sidebar = () => {
 
                   return (
                     <li key={link.route} className={`sidebar-nav_element group ${
-                      isActive ? 'bg-purple-gradient text-white' : 'text-gray-700'
+                      isActive ? 'bg-purple-gradient text-white' : 'text-gray-700 dark:text-gray-300'
                     }`}>
                       <Link className="sidebar-link" href={link.route}>
                         <Image 
@@ -36,7 +37,7 @@ const Sidebar = () => {
                           alt="logo"
                           width={24}
                           height={24}
-                          className={`${isActive && 'brightness-200'}`}
+                          className={`${isActive && 'brightness-200'} ${!isActive && 'dark:invert dark:brightness-90'}`}
                         />
                         {link.label}
                       </Link>
@@ -52,7 +53,7 @@ const Sidebar = () => {
 
                   return (
                     <li key={link.route} className={`sidebar-nav_element group ${
-                      isActive ? 'bg-purple-gradient text-white' : 'text-gray-700'
+                      isActive ? 'bg-purple-gradient text-white' : 'text-gray-700 dark:text-gray-300'
                     }`}>
                       <Link className="sidebar-link" href={link.route}>
                         <Image 
@@ -60,7 +61,7 @@ const Sidebar = () => {
                           alt="logo"
                           width={24}
                           height={24}
-                          className={`${isActive && 'brightness-200'}`}
+                          className={`${isActive && 'brightness-200'} ${!isActive && 'dark:invert dark:brightness-90'}`}
                         />
                         {link.label}
                       </Link>
@@ -70,6 +71,9 @@ const Sidebar = () => {
 
                 <li className="flex-center cursor-pointer gap-2 p-4">
                   <UserButton afterSignOutUrl='/' showName />
+                </li>
+                <li className="flex-center cursor-pointer gap-2 p-4">
+                  <ThemeToggle />
                 </li>
               </ul>
             </SignedIn>

@@ -76,22 +76,22 @@
 }
 
 .auth {
-  @apply flex-center min-h-screen w-full bg-purple-100
+  @apply flex-center min-h-screen w-full bg-purple-100 dark:bg-gray-900
 }
 
 .root {
-  @apply flex min-h-screen w-full flex-col bg-white lg:flex-row;
+  @apply flex min-h-screen w-full flex-col bg-white dark:bg-gray-900 lg:flex-row;
 }
 
 .root-container {
-  @apply mt-16 flex-1 overflow-auto py-8 lg:mt-0 lg:max-h-screen lg:py-10
+  @apply mt-16 flex-1 overflow-auto py-8 lg:mt-0 lg:max-h-screen lg:py-10 dark:bg-gray-900
 }
 
 /* ========================================== TAILWIND STYLES */
 @layer utilities {
   /* ===== UTILITIES */
   .wrapper {
-    @apply max-w-5xl mx-auto px-5 md:px-10 w-full text-dark-400 p-16-regular;
+    @apply max-w-5xl mx-auto px-5 md:px-10 w-full text-dark-400 dark:text-gray-300 p-16-regular;
   }
 
   .gradient-text {
@@ -179,11 +179,11 @@
   }
 
   .input-field {
-    @apply rounded-[16px] border-2 border-purple-200/20 shadow-sm shadow-purple-200/15 text-dark-600 disabled:opacity-100 p-16-semibold h-[50px] md:h-[54px] focus-visible:ring-offset-0 px-4 py-3 focus-visible:ring-transparent !important;
+    @apply rounded-[16px] border-2 border-purple-200/20 shadow-sm shadow-purple-200/15 text-dark-600 dark:text-gray-200 dark:bg-gray-800 dark:border-gray-700 disabled:opacity-100 p-16-semibold h-[50px] md:h-[54px] focus-visible:ring-offset-0 px-4 py-3 focus-visible:ring-transparent !important;
   }
 
   .search-field {
-    @apply border-0 bg-transparent text-dark-600 w-full placeholder:text-dark-400 h-[50px] p-16-medium focus-visible:ring-offset-0 p-3 focus-visible:ring-transparent !important;
+    @apply border-0 bg-transparent text-dark-600 dark:text-gray-200 w-full placeholder:text-dark-400 dark:placeholder:text-gray-500 h-[50px] p-16-medium focus-visible:ring-offset-0 p-3 focus-visible:ring-transparent !important;
   }
 
   .submit-button {
@@ -191,7 +191,7 @@
   }
 
   .select-field {
-    @apply w-full border-2 border-purple-200/20 shadow-sm shadow-purple-200/15 rounded-[16px] h-[50px] md:h-[54px] text-dark-600 p-16-semibold disabled:opacity-100 placeholder:text-dark-400/50 px-4 py-3 focus:ring-offset-0 focus-visible:ring-transparent focus:ring-transparent focus-visible:ring-0 focus-visible:outline-none !important;
+    @apply w-full border-2 border-purple-200/20 shadow-sm shadow-purple-200/15 rounded-[16px] h-[50px] md:h-[54px] text-dark-600 dark:text-gray-200 dark:bg-gray-800 dark:border-gray-700 p-16-semibold disabled:opacity-100 placeholder:text-dark-400/50 dark:placeholder:text-gray-500 px-4 py-3 focus:ring-offset-0 focus-visible:ring-transparent focus:ring-transparent focus-visible:ring-0 focus-visible:outline-none !important;
   }
 
   .select-trigger {
@@ -233,7 +233,7 @@
   }
 
   .credits-item {
-    @apply w-full rounded-[16px] border-2 border-purple-200/20 bg-white p-8 shadow-xl shadow-purple-200/20 lg:max-w-none;
+    @apply w-full rounded-[16px] border-2 border-purple-200/20 bg-white dark:bg-gray-800 dark:border-gray-700 p-8 shadow-xl shadow-purple-200/20 dark:shadow-gray-900/50 lg:max-w-none;
   }
 
   .credits-btn {
@@ -246,11 +246,11 @@
   }
 
   .profile-balance {
-    @apply w-full rounded-[16px] border-2 border-purple-200/20 bg-white p-5 shadow-lg shadow-purple-200/10 md:px-6 md:py-8;
+    @apply w-full rounded-[16px] border-2 border-purple-200/20 bg-white dark:bg-gray-800 dark:border-gray-700 p-5 shadow-lg shadow-purple-200/10 dark:shadow-gray-900/30 md:px-6 md:py-8;
   }
 
   .profile-image-manipulation {
-    @apply w-full rounded-[16px] border-2 border-purple-200/20 bg-white p-5 shadow-lg shadow-purple-200/10 md:px-6 md:py-8;
+    @apply w-full rounded-[16px] border-2 border-purple-200/20 bg-white dark:bg-gray-800 dark:border-gray-700 p-5 shadow-lg shadow-purple-200/10 dark:shadow-gray-900/30 md:px-6 md:py-8;
   }
 
   /* Transformation Details */
@@ -280,7 +280,7 @@
   }
 
   .collection-card {
-    @apply flex flex-1 cursor-pointer flex-col gap-5 rounded-[16px] border-2 border-purple-200/15 bg-white p-4 shadow-xl shadow-purple-200/10 transition-all hover:shadow-purple-200/20;
+    @apply flex flex-1 cursor-pointer flex-col gap-5 rounded-[16px] border-2 border-purple-200/15 bg-white dark:bg-gray-800 dark:border-gray-700 p-4 shadow-xl shadow-purple-200/10 dark:shadow-gray-900/30 transition-all hover:shadow-purple-200/20 dark:hover:shadow-gray-700/40;
   }
 
   /* MediaUploader Component */
@@ -298,7 +298,7 @@
 
   /* Navbar Component */
   .header {
-    @apply flex-between fixed h-16 w-full border-b-4 border-purple-100 bg-white p-5 lg:hidden;
+    @apply flex-between fixed h-16 w-full border-b-4 border-purple-100 dark:border-gray-700 bg-white dark:bg-gray-800 p-5 lg:hidden;
   }
 
   .header-nav_elements {
@@ -320,12 +320,12 @@
 
   /* Search Component */
   .search {
-    @apply flex w-full rounded-[16px] border-2 border-purple-200/20 bg-white px-4 shadow-sm shadow-purple-200/15 md:max-w-96;
+    @apply flex w-full rounded-[16px] border-2 border-purple-200/20 bg-white dark:bg-gray-800 dark:border-gray-700 px-4 shadow-sm shadow-purple-200/15 dark:shadow-gray-900/20 md:max-w-96;
   }
 
   /* Sidebar Component */
   .sidebar {
-    @apply hidden h-screen w-72 bg-white p-5 shadow-md shadow-purple-200/50 lg:flex;
+    @apply hidden h-screen w-72 bg-white dark:bg-gray-800 p-5 shadow-md shadow-purple-200/50 dark:shadow-gray-900/50 lg:flex;
   }
 
   .sidebar-logo {
@@ -358,7 +358,7 @@
   }
 
   .sidebar-nav_element {
-    @apply flex-center p-16-semibold w-full whitespace-nowrap rounded-full bg-cover  transition-all hover:bg-purple-100 hover:shadow-inner;
+    @apply flex-center p-16-semibold w-full whitespace-nowrap rounded-full bg-cover  transition-all hover:bg-purple-100 dark:hover:bg-gray-700 hover:shadow-inner;
   }
 
   .sidebar-link {
@@ -403,6 +403,19 @@
   font-size: 16px;
   font-weight: 600;
   color: #384262;
+}
+
+.dark .cl-userButtonOuterIdentifier {
+  color: #d1d5db;
+}
+
+/* ===== THEME TOGGLE ===== */
+.theme-toggle-btn {
+  @apply relative h-10 w-10 rounded-full bg-purple-100 dark:bg-gray-700 hover:bg-purple-200 dark:hover:bg-gray-600 transition-colors duration-200;
+}
+
+.theme-toggle-btn svg {
+  @apply text-purple-600 dark:text-yellow-400;
 }
 
 /* ===== LANDING PAGE ANIMATIONS ===== */

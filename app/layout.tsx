@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { IBM_Plex_Sans } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { ClerkProvider } from "@clerk/nextjs";
+import { ThemeProvider } from "@/components/shared/ThemeProvider";
 
 import "./globals.css";
 
@@ -12,7 +13,7 @@ const IBMPlex = IBM_Plex_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Khizo AI",
+  title: "Khizo AI - AI powered image generator",
   description: "AI-powered image generator",
 };
 
@@ -25,9 +26,11 @@ export default function RootLayout({
     <ClerkProvider appearance={{
       variables: { colorPrimary: '#624cf5' }
     }}>
-      <html lang="en">
+      <html lang="en" suppressHydrationWarning>
         <body className={cn("font-IBMPlex antialiased", IBMPlex.variable)}>
-          {children}
+          <ThemeProvider defaultTheme="system" storageKey="khizo-ui-theme">
+            {children}
+          </ThemeProvider>
         </body>
       </html>
     </ClerkProvider>
