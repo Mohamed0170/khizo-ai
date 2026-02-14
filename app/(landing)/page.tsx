@@ -4,6 +4,11 @@ import React from 'react';
 import { Navbar } from './components/Navbar';
 import { AppDemo } from './components/AppDemo';
 import { Features } from './components/Features';
+import { HowItWorks } from './components/HowItWorks';
+import { Gallery } from './components/Gallery';
+import { Comparison } from './components/Comparison';
+import { FAQ } from './components/FAQ';
+import { CTASection } from './components/CTASection';
 import { RevealOnScroll } from './components/RevealOnScroll';
 import { HeroAnimation } from './components/HeroAnimation';
 import { Logo } from './components/Logo';
@@ -154,37 +159,17 @@ export default function LandingPage() {
 
       <Features />
 
+      <HowItWorks />
+
+      <Gallery />
+
+      <Comparison />
+
       <Pricing />
 
-      {/* Call to Action */}
-      <section className="py-20 md:py-32 relative">
-        <div className="max-w-5xl mx-auto px-4 md:px-6 text-center">
-          <RevealOnScroll>
-            <div className="p-8 md:p-24 rounded-[2rem] md:rounded-[3rem] bg-indigo-600 dark:bg-indigo-700 relative overflow-hidden shadow-2xl shadow-indigo-200 dark:shadow-indigo-900/40 group">
-              <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
-              <div className="absolute -top-24 -left-24 w-64 h-64 bg-white/20 rounded-full blur-[80px]"></div>
-              <div className="absolute -bottom-24 -right-24 w-64 h-64 bg-violet-400/30 rounded-full blur-[80px]"></div>
-              
-              <div className="absolute top-0 -left-[100%] w-1/2 h-full bg-gradient-to-r from-transparent via-white/5 to-transparent skew-x-12 animate-shine"></div>
+      <FAQ />
 
-              <h2 className="text-3xl md:text-5xl font-bold mb-6 text-white relative z-10 leading-tight">
-                Ready to transform your workflow?
-              </h2>
-              <p className="text-base md:text-lg text-indigo-100 mb-8 md:mb-10 max-w-2xl mx-auto relative z-10 px-4">
-                Join us who using Khizo AI to produce stunning visuals in record time.
-              </p>
-              <Link 
-                href={APP_URL}
-                className="relative z-10 w-full md:w-auto px-10 py-4 bg-white text-indigo-600 hover:bg-indigo-50 rounded-full font-bold text-lg transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1 active:scale-95 overflow-hidden group/btn inline-block"
-              >
-                <div className="absolute inset-0 bg-indigo-50 opacity-0 group-hover/btn:opacity-100 transition-opacity"></div>
-                <div className="absolute inset-0 -translate-x-full group-hover/btn:animate-shine bg-gradient-to-r from-transparent via-indigo-100 to-transparent skew-x-12 z-20" />
-                <span className="relative z-30">Get Started Now</span>
-              </Link>
-            </div>
-          </RevealOnScroll>
-        </div>
-      </section>
+      <CTASection />
 
       {/* Footer */}
       <Footer />

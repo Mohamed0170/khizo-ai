@@ -12,7 +12,7 @@ const IBMPlex = IBM_Plex_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Khizo AI",
+  title: "Khizo AI - AI-Powered Image Generator",
   description: "AI-powered image generator",
   icons: {
     icon: "/icon.svg",

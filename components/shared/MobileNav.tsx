@@ -15,8 +15,18 @@ const MobileNav = () => {
 
   return (
     <header className="header">
-      <Link href="/" className="flex items-center gap-2 md:py-2">
-        <Logo className="w-7 h-7" />
+      <Link href="/dashboard" className="flex items-center gap-2 md:py-2">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" className="w-8 h-8">
+          <defs>
+            <linearGradient id="xg" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stopColor="#8B5CF6"/>
+              <stop offset="50%" stopColor="#7C3AED"/>
+              <stop offset="100%" stopColor="#6D28D9"/>
+            </linearGradient>
+          </defs>
+          <line x1="8" y1="8" x2="56" y2="56" stroke="url(#xg)" strokeWidth="16" strokeLinecap="round"/>
+          <line x1="56" y1="8" x2="8" y2="56" stroke="url(#xg)" strokeWidth="16" strokeLinecap="round"/>
+        </svg>
       </Link>
 
       <nav className="flex gap-2">
@@ -35,11 +45,6 @@ const MobileNav = () => {
             </SheetTrigger>
             <SheetContent className="sheet-content sm:w-64 overflow-hidden dark:bg-slate-950 dark:border-slate-800">
               <>
-                <div className="flex items-center gap-2">
-                  <Logo className="w-7 h-7" />
-                  <span className="font-bold text-lg tracking-tight text-indigo-600 dark:text-indigo-400">Khizo AI</span>
-                </div>
-
               <ul className="header-nav_elements">
               {navLinks.map((link) => {
                 const isActive = link.route === pathname
