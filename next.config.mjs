@@ -9,6 +9,14 @@ const nextConfig = {
       }
     ]
   },
+  async rewrites() {
+    return [
+      {
+        source: '/favicon.ico',
+        destination: '/favicon.svg',
+      },
+    ];
+  },
   eslint: {
     ignoreDuringBuilds: true,
   },
