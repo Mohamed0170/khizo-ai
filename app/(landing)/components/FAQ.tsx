@@ -16,7 +16,7 @@ const faqItems: FAQItem[] = [
   },
   {
     question: "How does the credit system work?",
-    answer: "Each transformation uses a certain number of credits depending on the complexity: Background removal uses 1 credit, Object removal uses 2 credits, Generative fill uses 3 credits, and so on. Free accounts receive 10 credits to start. You can purchase additional credits or upgrade to a Pro or Premium plan for more credits per month.",
+    answer: "Each transformation uses 1 credit, regardless of the type — whether it's background removal, object removal, generative fill, image restoration, or recoloring. Free accounts receive 10 credits to start. You can purchase additional credits or upgrade to a Pro or Premium plan for more credits per month.",
   },
   {
     question: "Is my data secure and private?",
