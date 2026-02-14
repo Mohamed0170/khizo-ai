@@ -15,7 +15,11 @@ export const metadata: Metadata = {
   title: "Khizo AI - AI-Powered Image Generator",
   description: "AI-powered image generator",
   icons: {
-    icon: "/icon.svg",
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/icon.svg", type: "image/svg+xml" },
+    ],
+    shortcut: "/favicon.svg",
   },
 };
 
