@@ -224,24 +224,71 @@
 
   /* Home Page */
   .home {
-    @apply sm:flex-center hidden h-72 flex-col gap-4 rounded-[20px] border bg-banner bg-cover bg-no-repeat p-10 shadow-inner;
+    @apply sm:flex-center hidden min-h-[280px] flex-col gap-3 rounded-[24px] border-0 bg-banner bg-cover bg-no-repeat p-10 md:p-12 relative overflow-hidden;
+    box-shadow: 0 8px 32px rgba(99, 102, 241, 0.25), inset 0 1px 0 rgba(255,255,255,0.1);
+  }
+
+  .home-decoration {
+    @apply absolute inset-0 pointer-events-none overflow-hidden;
+  }
+
+  .home-shape {
+    @apply absolute rounded-full opacity-20;
+  }
+
+  .home-shape-1 {
+    @apply w-32 h-32 bg-white/20 -top-10 -left-10 blur-2xl;
+    animation: float 8s ease-in-out infinite;
+  }
+
+  .home-shape-2 {
+    @apply w-40 h-40 bg-purple-300/20 -bottom-12 -right-12 blur-3xl;
+    animation: float 10s ease-in-out infinite reverse;
+  }
+
+  .home-shape-3 {
+    @apply w-20 h-20 bg-white/10 top-1/2 left-1/3 blur-xl;
+    animation: float 6s ease-in-out infinite 1s;
   }
 
   .home-heading {
-    @apply h1-semibold max-w-[500px] flex-wrap text-center text-white shadow-sm;
+    @apply h1-semibold max-w-[500px] flex-wrap text-center text-white drop-shadow-lg;
+  }
+
+  .home-tool-link {
+    @apply flex-center flex-col gap-2 transition-transform duration-300 hover:-translate-y-1;
+  }
+
+  .home-tool-icon {
+    @apply flex-center w-fit rounded-full bg-white/95 dark:bg-white p-4 shadow-lg shadow-black/10 transition-all duration-300;
+    backdrop-filter: blur(8px);
+  }
+
+  .home-tool-link:hover .home-tool-icon {
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15), 0 0 0 3px rgba(255,255,255,0.3);
   }
 
   /* Credits Page */
   .credits-list {
-    @apply mt-11 grid grid-cols-1 gap-5 sm:grid-cols-2 md:gap-9 xl:grid-cols-3;
+    @apply grid grid-cols-1 gap-6 sm:grid-cols-2 lg:gap-8 xl:grid-cols-3 items-start;
   }
 
-  .credits-item {
-    @apply w-full rounded-[16px] border-2 border-purple-200/20 dark:border-slate-700 bg-white dark:bg-slate-900 p-8 shadow-xl shadow-purple-200/20 dark:shadow-slate-900/50 lg:max-w-none;
+  .credits-card {
+    @apply relative rounded-2xl transition-all duration-300 hover:-translate-y-2 list-none;
   }
 
-  .credits-btn {
-    @apply w-full rounded-full bg-purple-100 bg-cover text-purple-500 hover:text-purple-500;
+  .credits-card-featured {
+    @apply z-10;
+  }
+
+  .credits-badge {
+    @apply absolute -top-4 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1.5 px-4 py-1.5 rounded-full text-white text-xs font-bold whitespace-nowrap;
+    background: linear-gradient(135deg, #6366f1 0%, #7c3aed 100%);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+  }
+
+  .credits-btn-free {
+    @apply w-full rounded-xl py-3 bg-slate-100 dark:bg-slate-800 text-gray-900 dark:text-white font-semibold text-sm hover:bg-slate-200 dark:hover:bg-slate-700 transition-all duration-300 active:scale-[0.98] !important;
   }
 
   /* Profile Page */
@@ -276,7 +323,7 @@
   }
 
   .collection-empty {
-    @apply flex-center h-60 w-full rounded-[10px] border border-dark-400/10 dark:border-slate-700 bg-white/20 dark:bg-slate-900/20;
+    @apply flex-center h-60 w-full rounded-[16px] border border-dark-400/10 dark:border-slate-700/50 bg-white/30 dark:bg-slate-900/30;
   }
 
   .collection-btn {
@@ -284,7 +331,21 @@
   }
 
   .collection-card {
-    @apply flex flex-1 cursor-pointer flex-col gap-5 rounded-[16px] border-2 border-purple-200/15 dark:border-slate-700 bg-white dark:bg-slate-900 p-4 shadow-xl shadow-purple-200/10 dark:shadow-slate-900/50 transition-all hover:shadow-purple-200/20 dark:hover:shadow-slate-800/50;
+    @apply flex flex-1 cursor-pointer flex-col gap-5 rounded-[18px] border border-purple-200/15 dark:border-slate-700/60 bg-white dark:bg-slate-900 p-4 transition-all duration-300;
+    box-shadow: 0 2px 12px rgba(147, 130, 220, 0.08);
+  }
+
+  .collection-card:hover {
+    box-shadow: 0 8px 30px rgba(147, 130, 220, 0.18);
+    transform: translateY(-3px);
+  }
+
+  .dark .collection-card {
+    box-shadow: 0 2px 12px rgba(15, 23, 42, 0.3);
+  }
+
+  .dark .collection-card:hover {
+    box-shadow: 0 8px 30px rgba(99, 102, 241, 0.12);
   }
 
   /* MediaUploader Component */
@@ -324,7 +385,12 @@
 
   /* Search Component */
   .search {
-    @apply flex w-full rounded-[16px] border-2 border-purple-200/20 dark:border-slate-700 bg-white dark:bg-slate-900 px-4 shadow-sm shadow-purple-200/15 dark:shadow-slate-900/50 md:max-w-96;
+    @apply flex w-full rounded-[16px] border border-purple-200/20 dark:border-slate-700 bg-white dark:bg-slate-900 px-4 shadow-sm shadow-purple-200/15 dark:shadow-slate-900/50 md:max-w-96 transition-all duration-300;
+  }
+
+  .search:focus-within {
+    @apply border-indigo-300 dark:border-indigo-500/40;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
   }
 
   /* Sidebar Component */

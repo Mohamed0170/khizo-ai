@@ -34,20 +34,31 @@ const Dashboard = async ({ searchParams }: SearchParamProps) => {
       </Suspense>
 
       <section className="home">
+        {/* Decorative floating shapes */}
+        <div className="home-decoration">
+          <div className="home-shape home-shape-1" />
+          <div className="home-shape home-shape-2" />
+          <div className="home-shape home-shape-3" />
+        </div>
+
         <h1 className="home-heading">
           Unleash Your Creative Vision with Khizo AI
         </h1>
-        <ul className="flex-center w-full gap-20">
+        <p className="text-white/70 text-sm md:text-base mt-1 max-w-md text-center">
+          Transform your images with powerful AI tools
+        </p>
+
+        <ul className="flex-center w-full gap-6 sm:gap-10 md:gap-16 lg:gap-20 mt-4 flex-wrap">
           {navLinks.slice(1, 5).map((link) => (
             <Link
               key={link.route}
               href={link.route}
-              className="flex-center flex-col gap-2"
+              className="home-tool-link group"
             >
-              <li className="flex-center w-fit rounded-full bg-white p-4">
-                <Image src={link.icon} alt="image" width={24} height={24} />
+              <li className="home-tool-icon">
+                <Image src={link.icon} alt="image" width={24} height={24} className="group-hover:scale-110 transition-transform duration-300" />
               </li>
-              <p className="p-14-medium text-center text-white">{link.label}</p>
+              <p className="p-14-medium text-center text-white/90 group-hover:text-white transition-colors">{link.label}</p>
             </Link>
           ))}
         </ul>

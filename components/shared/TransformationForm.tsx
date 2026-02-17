@@ -76,7 +76,8 @@ const TransformationForm = ({ action, data = null, userId, type, creditBalance, 
         width: image?.width,
         height: image?.height,
         src: image?.publicId,
-        ...transformationConfig
+        quality: 'auto:best',
+        ...transformationConfig,
       })
 
       const imageData = {
@@ -290,6 +291,7 @@ const TransformationForm = ({ action, data = null, userId, type, creditBalance, 
             isTransforming={isTransforming}
             setIsTransforming={setIsTransforming}
             transformationConfig={transformationConfig}
+            hasDownload={true}
           />
         </div>
 

@@ -110,7 +110,7 @@ export const getImageSize = (
 };
 
 // DOWNLOAD IMAGE
-export const download = (url: string, filename: string) => {
+export const download = (url: string, filename: string, format: string = 'png') => {
   if (!url) {
     throw new Error("Resource URL not provided! You need to provide one");
   }
@@ -121,11 +121,17 @@ export const download = (url: string, filename: string) => {
       const blobURL = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = blobURL;
-
-      if (filename && filename.length)
-        a.download = `${filename.replace(" ", "_")}.png`;
+      a.download = filename
+        ? `${filename.replace(/\s+/g, "_")}.${format}`
+        : `download.${format}`;
+      a.style.display = "none";
       document.body.appendChild(a);
       a.click();
+      // Cleanup
+      setTimeout(() => {
+        document.body.removeChild(a);
+        URL.revokeObjectURL(blobURL);
+      }, 100);
     })
     .catch((error) => console.log({ error }));
 };
