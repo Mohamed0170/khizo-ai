@@ -17,7 +17,7 @@ const MobileNav = () => {
     <header className="header">
       <Link href="/dashboard" className="flex items-center gap-2 md:py-2">
         <Logo className="w-8 h-8 md:w-9 md:h-9" />
-        <span className="font-bold text-xl md:text-2xl tracking-tight text-indigo-600 dark:text-indigo-400">Khizo AI</span>
+        <span className="hidden sm:inline font-bold text-xl md:text-2xl tracking-tight text-indigo-600 dark:text-indigo-400">Khizo AI</span>
       </Link>
 
       <nav className="flex gap-2">
