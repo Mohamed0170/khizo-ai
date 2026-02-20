@@ -211,11 +211,33 @@ const TransformationForm = ({ action, data = null, userId, type, creditBalance, 
                   <SelectValue placeholder="Select size" />
                 </SelectTrigger>
                 <SelectContent>
-                  {Object.keys(aspectRatioOptions).map((key) => (
-                    <SelectItem key={key} value={key} className="select-item">
-                      {aspectRatioOptions[key as AspectRatioKey].label}
-                    </SelectItem>
-                  ))}
+                  {Object.keys(aspectRatioOptions).map((key) => {
+                    const option = aspectRatioOptions[key as AspectRatioKey];
+                    const maxBoxSize = 32;
+                    const ratio = option.width / option.height;
+                    let boxW: number, boxH: number;
+                    if (ratio >= 1) {
+                      boxW = maxBoxSize;
+                      boxH = maxBoxSize / ratio;
+                    } else {
+                      boxH = maxBoxSize;
+                      boxW = maxBoxSize * ratio;
+                    }
+                    return (
+                      <SelectItem key={key} value={key} className="select-item">
+                        <div className="flex items-center gap-3">
+                          <div
+                            className="shrink-0 rounded-[3px] border-2 border-indigo-400 dark:border-indigo-500 bg-indigo-100 dark:bg-indigo-900/40"
+                            style={{ width: `${boxW}px`, height: `${boxH}px` }}
+                          />
+                          <div className="flex flex-col">
+                            <span className="text-sm font-medium">{option.label}</span>
+                            <span className="text-[11px] text-slate-400">{option.width} × {option.height}px</span>
+                          </div>
+                        </div>
+                      </SelectItem>
+                    );
+                  })}
                 </SelectContent>
               </Select>
             )}  

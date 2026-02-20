@@ -105,44 +105,44 @@ export async function getAllImages({ limit = 9, page = 1, searchQuery = '' }: {
   try {
     await connectToDatabase();
 
-    cloudinary.config({
-      cloud_name: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
-      api_key: process.env.CLOUDINARY_API_KEY,
-      api_secret: process.env.CLOUDINARY_API_SECRET,
-      secure: true,
-    })
-
-    let expression = 'folder=khizo-ai';
-
-    if (searchQuery) {
-      expression += ` AND ${searchQuery}`
-    }
-
-    const { resources } = await cloudinary.search
-      .expression(expression)
-      .execute();
-
-    const resourceIds = resources.map((resource: any) => resource.public_id);
-
     let query = {};
 
-    if(searchQuery) {
+    if (searchQuery) {
+      cloudinary.config({
+        cloud_name: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
+        api_key: process.env.CLOUDINARY_API_KEY,
+        api_secret: process.env.CLOUDINARY_API_SECRET,
+        secure: true,
+      });
+
+      let expression = 'folder=khizo-ai';
+      expression += ` AND ${searchQuery}`;
+
+      const { resources } = await cloudinary.search
+        .expression(expression)
+        .execute();
+
+      const resourceIds = resources.map((resource: any) => resource.public_id);
+
       query = {
         publicId: {
           $in: resourceIds
         }
-      }
+      };
     }
 
-    const skipAmount = (Number(page) -1) * limit;
+    const skipAmount = (Number(page) - 1) * limit;
 
-    const images = await populateUser(Image.find(query))
-      .sort({ updatedAt: -1 })
-      .skip(skipAmount)
-      .limit(limit);
-    
-    const totalImages = await Image.find(query).countDocuments();
-    const savedImages = await Image.find().countDocuments();
+    // Run queries in parallel for speed
+    const [images, totalImages, savedImages] = await Promise.all([
+      populateUser(Image.find(query))
+        .sort({ updatedAt: -1 })
+        .skip(skipAmount)
+        .limit(limit)
+        .lean(),
+      Image.find(query).countDocuments(),
+      Image.countDocuments(),
+    ]);
 
     return {
       data: JSON.parse(JSON.stringify(images)),
@@ -173,7 +173,8 @@ export async function getUserImages({
     const images = await populateUser(Image.find({ author: userId }))
       .sort({ updatedAt: -1 })
       .skip(skipAmount)
-      .limit(limit);
+      .limit(limit)
+      .lean();
 
     const totalImages = await Image.find({ author: userId }).countDocuments();
 

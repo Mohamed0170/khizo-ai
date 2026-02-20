@@ -174,11 +174,53 @@ export const aspectRatioOptions = {
     width: 1000,
     height: 1334,
   },
+  "4:3": {
+    aspectRatio: "4:3",
+    label: "Standard Landscape (4:3)",
+    width: 1334,
+    height: 1000,
+  },
   "9:16": {
     aspectRatio: "9:16",
     label: "Phone Portrait (9:16)",
     width: 1000,
     height: 1778,
+  },
+  "16:9": {
+    aspectRatio: "16:9",
+    label: "Widescreen (16:9)",
+    width: 1778,
+    height: 1000,
+  },
+  "2:3": {
+    aspectRatio: "2:3",
+    label: "Portrait (2:3)",
+    width: 1000,
+    height: 1500,
+  },
+  "3:2": {
+    aspectRatio: "3:2",
+    label: "Landscape (3:2)",
+    width: 1500,
+    height: 1000,
+  },
+  "21:9": {
+    aspectRatio: "21:9",
+    label: "Ultra Wide (21:9)",
+    width: 2100,
+    height: 900,
+  },
+  "5:4": {
+    aspectRatio: "5:4",
+    label: "Classic (5:4)",
+    width: 1250,
+    height: 1000,
+  },
+  "4:5": {
+    aspectRatio: "4:5",
+    label: "Instagram Portrait (4:5)",
+    width: 1000,
+    height: 1250,
   },
 };
 

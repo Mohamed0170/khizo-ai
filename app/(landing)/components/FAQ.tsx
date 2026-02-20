@@ -12,7 +12,11 @@ interface FAQItem {
 const faqItems: FAQItem[] = [
   {
     question: "What types of images does Khizo AI support?",
-    answer: "Khizo AI supports all major image formats including PNG, JPG, JPEG, WebP, and TIFF. You can upload images up to 25 megapixels in resolution. For best results, we recommend using high-quality source images, though our AI restoration tool can also enhance lower-quality photos.",
+    answer: "Khizo AI supports all major image formats including PNG, JPG, JPEG, WebP, AVIF, GIF, TIFF, and SVG. You can upload images up to 25 megapixels in resolution. For best results, we recommend using high-quality source images, though our AI restoration tool can also enhance lower-quality photos.",
+  },
+  {
+    question: "What formats can I download my images in?",
+    answer: "After transforming your image, you can download it in 8 different formats: PNG, JPG, JPEG, WEBP, AVIF, GIF, TIFF, and SVG. Simply click the format selector next to the download button and choose the format that best suits your needs — WEBP for web performance, PNG for transparency support, TIFF for print-quality output, GIF for compatibility, AVIF for modern compression, and more.",
   },
   {
     question: "How does the credit system work?",

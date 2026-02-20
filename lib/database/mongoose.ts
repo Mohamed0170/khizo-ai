@@ -23,7 +23,12 @@ export const connectToDatabase = async () => {
   cached.promise = 
     cached.promise || 
     mongoose.connect(MONGODB_URL, { 
-      dbName: 'khizo-ai', bufferCommands: false 
+      dbName: 'khizo-ai', 
+      bufferCommands: false,
+      maxPoolSize: 10,
+      minPoolSize: 2,
+      socketTimeoutMS: 30000,
+      serverSelectionTimeoutMS: 5000,
     })
 
   cached.conn = await cached.promise;

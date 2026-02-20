@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { RevealOnScroll } from './RevealOnScroll';
-import { Image, Sparkles, Eraser, Palette, Scissors, Zap, LucideIcon, ArrowRight } from 'lucide-react';
+import { Image, Sparkles, Eraser, Palette, Scissors, Zap, Download, LucideIcon, ArrowRight } from 'lucide-react';
 
 interface FeatureItem {
   title: string;
@@ -47,6 +47,13 @@ const features: FeatureItem[] = [
     description: "Extract subjects from their backgrounds with incredible precision — even handling fine details like hair, fur, and transparent edges. Export as transparent PNG or replace with any custom background. Ideal for product photography, portraits, and design work.",
     icon: Scissors,
     accentColor: "emerald",
+  },
+  {
+    title: "Multi-Format Download",
+    subtitle: "Export in any format you need.",
+    description: "Download your transformed images in 8 different formats — PNG, JPG, JPEG, WEBP, AVIF, GIF, TIFF, and SVG. Choose the perfect format for your use case: WEBP for web performance, PNG for transparency, TIFF for print quality, or any other format with a single click.",
+    icon: Download,
+    accentColor: "cyan",
   },
   {
     title: "Lightning Fast",
@@ -260,12 +267,58 @@ const LightningFastIllustration = () => (
   </div>
 );
 
+const MultiFormatDownloadIllustration = () => {
+  const formats = ['PNG', 'JPG', 'JPEG', 'WEBP', 'AVIF', 'GIF', 'TIFF', 'SVG'];
+  return (
+    <div className="relative w-full h-full flex items-center justify-center">
+      {/* Central download icon */}
+      <div className="relative z-10 w-16 h-16 rounded-2xl bg-gradient-to-br from-cyan-400 to-blue-500 dark:from-cyan-500 dark:to-blue-600 flex items-center justify-center shadow-lg shadow-cyan-500/20">
+        <Download size={28} className="text-white" />
+      </div>
+      {/* Format badges orbiting */}
+      {formats.map((fmt, i) => {
+        const angle = (i * 360) / formats.length - 90;
+        const rad = (angle * Math.PI) / 180;
+        const rx = 72;
+        const ry = 56;
+        const x = Math.cos(rad) * rx;
+        const y = Math.sin(rad) * ry;
+        return (
+          <div
+            key={fmt}
+            className="absolute px-2 py-1 rounded-md text-[11px] font-bold border shadow-sm animate-pulse"
+            style={{
+              left: `calc(50% + ${x}px - 20px)`,
+              top: `calc(50% + ${y}px - 12px)`,
+              animationDelay: `${i * 0.2}s`,
+              background: 'var(--fmt-bg)',
+              borderColor: 'var(--fmt-border)',
+              color: 'var(--fmt-text)',
+              // @ts-ignore
+              '--fmt-bg': i % 2 === 0 ? 'rgb(236 254 255)' : 'rgb(240 249 255)',
+              '--fmt-border': i % 2 === 0 ? 'rgb(103 232 249 / 0.5)' : 'rgb(125 211 252 / 0.5)',
+              '--fmt-text': i % 2 === 0 ? 'rgb(8 145 178)' : 'rgb(2 132 199)',
+            }}
+          >
+            {fmt}
+          </div>
+        );
+      })}
+      {/* Label */}
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-cyan-500/10 dark:bg-cyan-500/20 border border-cyan-400/30 text-[11px] font-medium text-cyan-600 dark:text-cyan-400">
+        8 Formats
+      </div>
+    </div>
+  );
+};
+
 const illustrations: Record<string, React.FC> = {
   "Generative Fill": GenerativeFillIllustration,
   "Object Removal": ObjectRemovalIllustration,
   "Image Restore": ImageRestoreIllustration,
   "Object Recolor": ObjectRecolorIllustration,
   "Background Remove": BackgroundRemoveIllustration,
+  "Multi-Format Download": MultiFormatDownloadIllustration,
   "Lightning Fast": LightningFastIllustration,
 };
 

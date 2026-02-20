@@ -7,6 +7,13 @@ import { auth } from "@clerk/nextjs"
 import Image from "next/image"
 import Link from "next/link"
 import { Suspense } from "react"
+import { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Dashboard - Browse AI Transformed Images",
+  description:
+    "Browse and search through AI-transformed images. View restorations, generative fills, object removals, recolors, and background removals created with Khizo AI.",
+};
 
 const Dashboard = async ({ searchParams }: SearchParamProps) => {
   const page = Number(searchParams?.page) || 1;

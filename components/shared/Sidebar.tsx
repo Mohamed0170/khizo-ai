@@ -18,7 +18,7 @@ const Sidebar = () => {
         {/* Logo */}
         <Link href="/dashboard" className="sidebar-logo">
           <Logo className="w-8 h-8 md:w-9 md:h-9" />
-          <span className="font-bold text-xl tracking-tight text-indigo-600 dark:text-indigo-400">Khizo AI</span>
+          <span className="font-bold text-xl md:text-2xl tracking-tight text-indigo-600 dark:text-indigo-400">Khizo AI</span>
         </Link>
 
         <nav className="sidebar-nav">

@@ -1,6 +1,7 @@
 import { auth } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
+import { Metadata } from "next";
 
 import Header from "@/components/shared/Header";
 import TransformedImage from "@/components/shared/TransformedImage";
@@ -8,6 +9,21 @@ import { Button } from "@/components/ui/button";
 import { getImageById } from "@/lib/actions/image.actions";
 import { getImageSize } from "@/lib/utils";
 import { DeleteConfirmation } from "@/components/shared/DeleteConfirmation";
+import { transformationTypes } from "@/constants";
+
+export async function generateMetadata({
+  params: { id },
+}: SearchParamProps): Promise<Metadata> {
+  const image = await getImageById(id);
+  const typeName =
+    transformationTypes[image.transformationType as TransformationTypeKey]
+      ?.title || "Transformation";
+
+  return {
+    title: `${image.title} - ${typeName}`,
+    description: `AI-transformed image: ${image.title}. Created using Khizo AI's ${typeName} tool.`,
+  };
+}
 
 const ImageDetails = async ({ params: { id } }: SearchParamProps) => {
   const { userId } = auth();

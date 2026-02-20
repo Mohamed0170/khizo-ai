@@ -1,21 +1,42 @@
 "use client";
 
 import React from 'react';
+import dynamic from 'next/dynamic';
 import { Navbar } from './components/Navbar';
-import { AppDemo } from './components/AppDemo';
-import { Features } from './components/Features';
-import { HowItWorks } from './components/HowItWorks';
-import { Gallery } from './components/Gallery';
-import { Comparison } from './components/Comparison';
-import { FAQ } from './components/FAQ';
-import { CTASection } from './components/CTASection';
 import { RevealOnScroll } from './components/RevealOnScroll';
 import { HeroAnimation } from './components/HeroAnimation';
 import { Logo } from './components/Logo';
-import { Footer } from './components/Footer';
-import { Pricing } from './components/Pricing';
 import { ArrowRight, Star, ShieldCheck, Zap } from 'lucide-react';
 import Link from 'next/link';
+
+// Lazy load heavy sections - only load when user scrolls to them
+const AppDemo = dynamic(() => import('./components/AppDemo').then(m => ({ default: m.AppDemo })), {
+  loading: () => <div className="h-[400px]" />,
+});
+const Features = dynamic(() => import('./components/Features').then(m => ({ default: m.Features })), {
+  loading: () => <div className="h-96" />,
+});
+const HowItWorks = dynamic(() => import('./components/HowItWorks').then(m => ({ default: m.HowItWorks })), {
+  loading: () => <div className="h-96" />,
+});
+const Gallery = dynamic(() => import('./components/Gallery').then(m => ({ default: m.Gallery })), {
+  loading: () => <div className="h-96" />,
+});
+const Comparison = dynamic(() => import('./components/Comparison').then(m => ({ default: m.Comparison })), {
+  loading: () => <div className="h-96" />,
+});
+const Pricing = dynamic(() => import('./components/Pricing').then(m => ({ default: m.Pricing })), {
+  loading: () => <div className="h-96" />,
+});
+const FAQ = dynamic(() => import('./components/FAQ').then(m => ({ default: m.FAQ })), {
+  loading: () => <div className="h-96" />,
+});
+const CTASection = dynamic(() => import('./components/CTASection').then(m => ({ default: m.CTASection })), {
+  loading: () => <div className="h-64" />,
+});
+const Footer = dynamic(() => import('./components/Footer').then(m => ({ default: m.Footer })), {
+  loading: () => <div className="h-48" />,
+});
 
 const APP_URL = "/sign-up";
 
@@ -34,6 +55,8 @@ export default function LandingPage() {
             loop 
             muted 
             playsInline
+            preload="none"
+            loading="lazy"
             className="absolute inset-0 w-full h-full object-cover opacity-60 dark:opacity-20"
           >
             <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-white-lines-fading-in-and-out-2747-large.mp4" type="video/mp4" />

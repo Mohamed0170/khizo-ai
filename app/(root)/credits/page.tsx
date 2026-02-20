@@ -1,10 +1,17 @@
 import { SignedIn, auth } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
+import { Metadata } from "next";
 
 import { Button } from "@/components/ui/button";
 import { plans } from "@/constants";
 import { getUserById } from "@/lib/actions/user.actions";
 import Checkout from "@/components/shared/Checkout";
+
+export const metadata: Metadata = {
+  title: "Buy Credits - Khizo AI Pricing Plans",
+  description:
+    "Purchase credits to unlock AI image transformations. Choose from Free, Pro, and Premium plans for image restoration, object removal, and more.",
+};
 
 const planMeta: Record<string, { description: string; featured: boolean; ctaFree: string }> = {
   Free: { description: "Perfect for getting started", featured: false, ctaFree: "Free Consumable" },

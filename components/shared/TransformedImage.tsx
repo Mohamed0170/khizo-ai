@@ -9,8 +9,11 @@ import React, { useState } from 'react'
 const IMAGE_FORMATS = [
   { value: 'png', label: 'PNG' },
   { value: 'jpg', label: 'JPG' },
+  { value: 'jpeg', label: 'JPEG' },
   { value: 'webp', label: 'WEBP' },
   { value: 'avif', label: 'AVIF' },
+  { value: 'gif', label: 'GIF' },
+  { value: 'tiff', label: 'TIFF' },
   { value: 'svg', label: 'SVG' },
 ] as const;
 
