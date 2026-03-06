@@ -2,8 +2,24 @@ import { authMiddleware } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
  
 export default authMiddleware({
-  publicRoutes: ["/", "/sign-in(.*)", "/sign-up(.*)", "/api/webhooks(.*)", "/api/sync-credits(.*)"],
-  ignoredRoutes: ["/api/webhooks(.*)", "/api/sync-credits(.*)"],
+  publicRoutes: [
+    "/",
+    "/sign-in(.*)",
+    "/sign-up(.*)",
+    "/api/webhooks(.*)",
+    "/api/sync-credits(.*)",
+  ],
+  ignoredRoutes: [
+    "/api/webhooks(.*)",
+    "/api/sync-credits(.*)",
+    "/sitemap.xml",
+    "/robots.txt",
+    "/manifest.json",
+    "/opengraph-image(.*)",
+    "/twitter-image(.*)",
+    "/favicon.svg",
+    "/icon.svg",
+  ],
   afterAuth(auth, req) {
     // If user is signed in and trying to access the landing page, redirect to dashboard
     if (auth.userId && req.nextUrl.pathname === "/") {
