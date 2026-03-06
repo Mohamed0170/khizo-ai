@@ -6,7 +6,11 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/", "/profile/"],
+        disallow: ["/api/", "/profile/", "/dashboard/", "/credits/", "/transformations/"],
+      },
+      {
+        userAgent: "Googlebot-Video",
+        disallow: ["/"],
       },
     ],
     sitemap: "https://khizo.dev/sitemap.xml",

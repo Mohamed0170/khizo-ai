@@ -59,14 +59,16 @@ export default function LandingPage() {
       {/* Hero Section */}
       <section className="relative pt-32 pb-12 md:pt-48 md:pb-24 overflow-hidden min-h-[90vh] flex flex-col justify-center">
         
-        {/* Background Video */}
-        <div className="absolute inset-0 w-full h-full overflow-hidden -z-20">
+        {/* Background Video - decorative only, hidden from search engines */}
+        <div className="absolute inset-0 w-full h-full overflow-hidden -z-20" aria-hidden="true" data-nosnippet>
           <video 
             autoPlay 
             loop 
             muted 
             playsInline
             preload="none"
+            aria-hidden="true"
+            tabIndex={-1}
             className="absolute inset-0 w-full h-full object-cover opacity-60 dark:opacity-20"
           >
             <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-white-lines-fading-in-and-out-2747-large.mp4" type="video/mp4" />
