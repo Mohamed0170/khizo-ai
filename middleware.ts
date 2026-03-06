@@ -1,36 +1,44 @@
 import { authMiddleware } from "@clerk/nextjs";
-import { NextResponse } from "next/server";
- 
-export default authMiddleware({
-  publicRoutes: [
-    "/",
-    "/sign-in(.*)",
-    "/sign-up(.*)",
-    "/api/webhooks(.*)",
-    "/api/sync-credits(.*)",
-  ],
-  ignoredRoutes: [
-    "/api/webhooks(.*)",
-    "/api/sync-credits(.*)",
-    "/sitemap.xml",
-    "/robots.txt",
-    "/manifest.json",
-    "/opengraph-image(.*)",
-    "/twitter-image(.*)",
-    "/favicon.svg",
-    "/icon.svg",
-  ],
-  afterAuth(auth, req) {
-    // If user is signed in and trying to access the landing page, redirect to dashboard
-    if (auth.userId && req.nextUrl.pathname === "/") {
-      const dashboard = new URL("/dashboard", req.url);
-      return NextResponse.redirect(dashboard);
-    }
-    
-    // Allow public routes
+import { NextResponse, NextRequest } from "next/server";
+
+// Routes that should completely bypass Clerk (no auth processing at all)
+const bypassRoutes = [
+  "/",
+  "/sign-in",
+  "/sign-up",
+  "/sitemap.xml",
+  "/robots.txt",
+  "/manifest.json",
+  "/google",
+  "/opengraph-image",
+  "/twitter-image",
+  "/favicon",
+  "/icon",
+];
+
+function shouldBypass(pathname: string): boolean {
+  return bypassRoutes.some(
+    (route) => pathname === route || pathname.startsWith(route + "/") || pathname.startsWith(route + ".")
+  );
+}
+
+export default function middleware(req: NextRequest) {
+  const { pathname } = req.nextUrl;
+
+  // Completely skip Clerk for public/SEO routes — allows Googlebot to crawl freely
+  if (shouldBypass(pathname)) {
     return NextResponse.next();
   }
-});
+
+  // All other routes go through Clerk auth
+  return authMiddleware({
+    publicRoutes: [],
+    ignoredRoutes: [
+      "/api/webhooks(.*)",
+      "/api/sync-credits(.*)",
+    ],
+  })(req, {} as any);
+}
 
 export const config = {
   matcher: ["/((?!.*\\..*|_next).*)", "/", "/(api|trpc)(.*)"],
