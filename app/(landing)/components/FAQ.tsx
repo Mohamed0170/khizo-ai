@@ -15,10 +15,6 @@ const faqItems: FAQItem[] = [
     answer: "Khizo AI supports all major image formats including PNG, JPG, JPEG, WebP, AVIF, GIF, TIFF, and SVG. You can upload images up to 25 megapixels in resolution. For best results, we recommend using high-quality source images, though our AI restoration tool can also enhance lower-quality photos.",
   },
   {
-    question: "What formats can I download my images in?",
-    answer: "After transforming your image, you can download it in 8 different formats: PNG, JPG, JPEG, WEBP, AVIF, GIF, TIFF, and SVG. Simply click the format selector next to the download button and choose the format that best suits your needs — WEBP for web performance, PNG for transparency support, TIFF for print-quality output, GIF for compatibility, AVIF for modern compression, and more.",
-  },
-  {
     question: "How does the credit system work?",
     answer: "Each transformation uses 1 credit, regardless of the type — whether it's background removal, object removal, generative fill, image restoration, or recoloring. Free accounts receive 10 credits to start. You can purchase additional credits or upgrade to a Pro or Premium plan for more credits per month.",
   },
