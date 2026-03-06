@@ -1,10 +1,18 @@
-"use client";
-
-import React, { useEffect } from 'react';
 import dynamic from 'next/dynamic';
-import { useAuth } from '@clerk/nextjs';
-import { useRouter } from 'next/navigation';
 import { Navbar } from './components/Navbar';
+import { RevealOnScroll } from './components/RevealOnScroll';
+import { HeroAnimation } from './components/HeroAnimation';
+import { Logo } from './components/Logo';
+import { ArrowRight, Star, ShieldCheck, Zap } from 'lucide-react';
+import Link from 'next/link';
+import { redirect } from 'next/navigation';
+import { auth } from '@clerk/nextjs';
+
+export default async function LandingPage() {
+  const { userId } = auth();
+  if (userId) {
+    redirect('/dashboard');
+  }
 import { RevealOnScroll } from './components/RevealOnScroll';
 import { HeroAnimation } from './components/HeroAnimation';
 import { Logo } from './components/Logo';
@@ -39,18 +47,6 @@ const CTASection = dynamic(() => import('./components/CTASection').then(m => ({ 
 const Footer = dynamic(() => import('./components/Footer').then(m => ({ default: m.Footer })), {
   loading: () => <div className="h-48" />,
 });
-
-const APP_URL = "/sign-up";
-
-export default function LandingPage() {
-  const { isSignedIn, isLoaded } = useAuth();
-  const router = useRouter();
-
-  useEffect(() => {
-    if (isLoaded && isSignedIn) {
-      router.replace('/dashboard');
-    }
-  }, [isLoaded, isSignedIn, router]);
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 selection:bg-indigo-200 dark:selection:bg-indigo-900 selection:text-indigo-900 dark:selection:text-indigo-100 overflow-x-hidden transition-colors duration-300 font-IBMPlex">
