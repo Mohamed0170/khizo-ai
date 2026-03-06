@@ -97,7 +97,10 @@ export default function RootLayout({
     <ClerkProvider 
       afterSignOutUrl="/"
       appearance={{
-        variables: { colorPrimary: '#624cf5' }
+        variables: { colorPrimary: '#624cf5' },
+        elements: {
+          footer: 'hidden',
+        },
       }}
     >
       <html lang="en" suppressHydrationWarning>

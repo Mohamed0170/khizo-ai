@@ -29,14 +29,14 @@ const Credits = async () => {
   return (
     <>
       {/* Header */}
-      <div className="mb-10 md:mb-14">
-        <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white tracking-tight">
+      <div className="mb-6 sm:mb-10 md:mb-14">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white tracking-tight">
           Buy{' '}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600 dark:from-indigo-400 dark:to-violet-400">
             Credits
           </span>
         </h2>
-        <p className="text-gray-500 dark:text-slate-400 text-base mt-2">
+        <p className="text-gray-500 dark:text-slate-400 text-sm sm:text-base mt-1.5 sm:mt-2">
           Choose a credit package that suits your needs!
         </p>
       </div>
@@ -66,48 +66,48 @@ const Credits = async () => {
                   <div className="absolute -inset-[1px] rounded-2xl bg-gradient-to-b from-indigo-500 via-violet-500 to-indigo-500 opacity-100 dark:opacity-70 -z-10" />
                 )}
 
-                <div className={`relative h-full rounded-2xl p-6 lg:p-8 flex flex-col ${
+                <div className={`relative h-full rounded-2xl px-4 py-4 sm:p-6 lg:p-8 flex flex-col ${
                   meta.featured
                     ? 'bg-white dark:bg-slate-900 shadow-2xl shadow-indigo-200/50 dark:shadow-indigo-900/30'
                     : 'bg-white dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 shadow-lg hover:shadow-xl'
                 } transition-all duration-300`}>
 
                   {/* Plan header */}
-                  <div className="mb-6">
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-1">
+                  <div className="mb-3 sm:mb-6">
+                    <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-0.5 sm:mb-1">
                       {plan.name}
                     </h3>
-                    <p className="text-sm text-gray-500 dark:text-slate-400">
+                    <p className="text-xs sm:text-sm text-gray-500 dark:text-slate-400">
                       {meta.description}
                     </p>
                   </div>
 
                   {/* Price */}
-                  <div className="mb-6 pb-6 border-b border-slate-100 dark:border-slate-800">
+                  <div className="mb-3 pb-3 sm:mb-6 sm:pb-6 border-b border-slate-100 dark:border-slate-800">
                     <div className="flex items-baseline gap-1">
-                      <span className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white">
+                      <span className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white">
                         ${plan.price}
                       </span>
                     </div>
-                    <p className="text-sm text-gray-500 dark:text-slate-400 mt-1">
+                    <p className="text-xs sm:text-sm text-gray-500 dark:text-slate-400 mt-0.5 sm:mt-1">
                       {plan.credits.toLocaleString()} credits
                     </p>
                   </div>
 
                   {/* Inclusions */}
-                  <ul className="space-y-3 mb-8 flex-1">
+                  <ul className="space-y-2 sm:space-y-3 mb-4 sm:mb-8 flex-1">
                     {plan.inclusions.map((inclusion) => (
-                      <li key={plan.name + inclusion.label} className="flex items-start gap-3">
+                      <li key={plan.name + inclusion.label} className="flex items-start gap-2 sm:gap-3">
                         {inclusion.isIncluded ? (
-                          <div className="mt-0.5 w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center flex-shrink-0">
-                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="text-emerald-600 dark:text-emerald-400"><path d="M20 6 9 17l-5-5"/></svg>
+                          <div className="mt-0.5 w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center flex-shrink-0">
+                            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="text-emerald-600 dark:text-emerald-400 sm:w-3 sm:h-3"><path d="M20 6 9 17l-5-5"/></svg>
                           </div>
                         ) : (
-                          <div className="mt-0.5 w-5 h-5 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center flex-shrink-0">
-                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="text-slate-400 dark:text-slate-600"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                          <div className="mt-0.5 w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center flex-shrink-0">
+                            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="text-slate-400 dark:text-slate-600 sm:w-3 sm:h-3"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
                           </div>
                         )}
-                        <span className={`text-sm ${
+                        <span className={`text-xs sm:text-sm ${
                           inclusion.isIncluded
                             ? 'text-gray-700 dark:text-slate-300'
                             : 'text-gray-400 dark:text-slate-600'

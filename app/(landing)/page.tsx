@@ -56,7 +56,6 @@ export default function LandingPage() {
             muted 
             playsInline
             preload="none"
-            loading="lazy"
             className="absolute inset-0 w-full h-full object-cover opacity-60 dark:opacity-20"
           >
             <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-white-lines-fading-in-and-out-2747-large.mp4" type="video/mp4" />

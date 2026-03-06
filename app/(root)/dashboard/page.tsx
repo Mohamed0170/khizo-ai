@@ -57,16 +57,17 @@ const Dashboard = async ({ searchParams }: SearchParamProps) => {
 
         <ul className="flex-center w-full gap-6 sm:gap-10 md:gap-16 lg:gap-20 mt-4 flex-wrap">
           {navLinks.slice(1, 5).map((link) => (
-            <Link
-              key={link.route}
-              href={link.route}
-              className="home-tool-link group"
-            >
-              <li className="home-tool-icon">
-                <Image src={link.icon} alt="image" width={24} height={24} className="group-hover:scale-110 transition-transform duration-300" />
-              </li>
-              <p className="p-14-medium text-center text-white/90 group-hover:text-white transition-colors">{link.label}</p>
-            </Link>
+            <li key={link.route}>
+              <Link
+                href={link.route}
+                className="home-tool-link group"
+              >
+                <div className="home-tool-icon">
+                  <Image src={link.icon} alt="image" width={24} height={24} className="group-hover:scale-110 transition-transform duration-300" />
+                </div>
+                <span className="p-14-medium text-center text-white/90 group-hover:text-white transition-colors">{link.label}</span>
+              </Link>
+            </li>
           ))}
         </ul>
       </section>

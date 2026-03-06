@@ -6,7 +6,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Button } from '../ui/button'
-import Logo from './Logo'
 import ThemeToggle from './ThemeToggle'
 
 const Sidebar = () => {
@@ -17,7 +16,23 @@ const Sidebar = () => {
       <div className="flex size-full flex-col gap-4">
         {/* Logo */}
         <Link href="/dashboard" className="sidebar-logo">
-          <Logo className="w-8 h-8 md:w-9 md:h-9" />
+          <svg 
+            className="w-8 h-8 md:w-9 md:h-9 flex-shrink-0" 
+            viewBox="0 0 32 32" 
+            fill="none" 
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs>
+              <linearGradient id="khizo-grad-sb" x1="4" y1="4" x2="28" y2="28" gradientUnits="userSpaceOnUse">
+                <stop stopColor="#4F46E5" />
+                <stop offset="1" stopColor="#7C3AED" />
+              </linearGradient>
+            </defs>
+            <g fill="url(#khizo-grad-sb)">
+              <rect x="12" y="-4" width="8" height="40" rx="2" transform="rotate(45 16 16)" />
+              <rect x="12" y="-4" width="8" height="40" rx="2" transform="rotate(-45 16 16)" />
+            </g>
+          </svg>
           <span className="font-bold text-xl md:text-2xl tracking-tight text-indigo-600 dark:text-indigo-400">Khizo AI</span>
         </Link>
 

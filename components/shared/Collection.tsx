@@ -4,12 +4,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams, useRouter } from "next/navigation";
 import { CldImage } from "next-cloudinary";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 import {
   Pagination,
   PaginationContent,
-  PaginationNext,
-  PaginationPrevious,
 } from "@/components/ui/pagination";
 import { transformationTypes } from "@/constants";
 import { IImage } from "@/lib/database/models/image.model";
@@ -85,25 +84,31 @@ export const Collection = ({
       {totalPages > 1 && (
         <Pagination className="mt-10">
           <PaginationContent className="flex w-full">
-            <Button
-              disabled={Number(page) <= 1}
-              className="collection-btn"
-              onClick={() => onPageChange("prev")}
-            >
-              <PaginationPrevious className="hover:bg-transparent hover:text-white" />
-            </Button>
+            <li>
+              <Button
+                disabled={Number(page) <= 1}
+                className="collection-btn"
+                onClick={() => onPageChange("prev")}
+              >
+                <ChevronLeft className="h-4 w-4" />
+                <span>Previous</span>
+              </Button>
+            </li>
 
-            <p className="flex-center p-16-medium w-fit flex-1">
+            <li className="flex-center p-16-medium w-fit flex-1">
               {page} / {totalPages}
-            </p>
+            </li>
 
-            <Button
-              className="button w-32 bg-purple-gradient bg-cover text-white"
-              onClick={() => onPageChange("next")}
-              disabled={Number(page) >= totalPages}
-            >
-              <PaginationNext className="hover:bg-transparent hover:text-white" />
-            </Button>
+            <li>
+              <Button
+                className="button w-32 bg-purple-gradient bg-cover text-white"
+                onClick={() => onPageChange("next")}
+                disabled={Number(page) >= totalPages}
+              >
+                <span>Next</span>
+                <ChevronRight className="h-4 w-4" />
+              </Button>
+            </li>
           </PaginationContent>
         </Pagination>
       )}

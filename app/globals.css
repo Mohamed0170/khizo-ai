@@ -102,7 +102,104 @@
 }
 
 .auth {
-  @apply flex-center min-h-screen w-full bg-purple-100
+  @apply flex min-h-screen w-full;
+}
+
+.auth-brand {
+  @apply hidden lg:flex relative w-[480px] min-h-screen flex-col items-center justify-center overflow-hidden flex-shrink-0;
+  background: linear-gradient(135deg, #4F46E5 0%, #6D28D9 40%, #7C3AED 100%);
+}
+
+.auth-brand-bg {
+  @apply absolute inset-0;
+  background-image:
+    radial-gradient(circle at 20% 50%, rgba(255,255,255,0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255,255,255,0.06) 0%, transparent 40%),
+    radial-gradient(circle at 60% 80%, rgba(124,58,237,0.3) 0%, transparent 50%);
+}
+
+.auth-form {
+  @apply flex-1 flex items-center justify-center min-h-screen p-4 sm:p-6;
+  background: linear-gradient(180deg, #f8f7ff 0%, #eef2ff 100%);
+}
+
+:is(.dark .auth-form) {
+  background: linear-gradient(180deg, #0f172a 0%, #1e1b4b 100%);
+}
+
+.auth-card {
+  @apply w-full max-w-[400px] rounded-2xl px-6 py-8 sm:px-8 sm:py-10;
+  @apply bg-white shadow-xl shadow-indigo-100/50 border border-slate-100;
+}
+
+:is(.dark .auth-card) {
+  @apply bg-slate-900 border-slate-800 shadow-indigo-950/30;
+}
+
+.auth-oauth-btn {
+  @apply flex items-center justify-center gap-3 w-full h-11 rounded-xl text-sm font-medium;
+  @apply border border-slate-200 bg-white text-slate-700;
+  @apply hover:bg-slate-50 active:scale-[0.98] transition-all duration-200;
+}
+
+:is(.dark .auth-oauth-btn) {
+  @apply border-slate-700 bg-slate-800 text-slate-200 hover:bg-slate-700;
+}
+
+.auth-divider {
+  @apply flex items-center gap-3 my-5;
+}
+
+.auth-divider-line {
+  @apply flex-1 h-px bg-slate-200;
+}
+
+:is(.dark .auth-divider-line) {
+  @apply bg-slate-700;
+}
+
+.auth-divider-text {
+  @apply text-xs text-slate-400 font-medium;
+}
+
+:is(.dark .auth-divider-text) {
+  @apply text-slate-500;
+}
+
+.auth-label {
+  @apply block text-sm font-medium text-slate-600 mb-1.5;
+}
+
+:is(.dark .auth-label) {
+  @apply text-slate-400;
+}
+
+.auth-input {
+  @apply w-full h-11 px-3.5 rounded-xl border border-slate-200 bg-slate-50/50 text-slate-900 text-sm;
+  @apply placeholder:text-slate-400 focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100 transition-all;
+}
+
+:is(.dark .auth-input) {
+  @apply border-slate-700 bg-slate-800/50 text-slate-100 placeholder:text-slate-500 focus:border-indigo-500 focus:ring-indigo-900/50;
+}
+
+.auth-submit-btn {
+  @apply w-full h-11 rounded-xl text-white text-sm font-semibold;
+  @apply active:scale-[0.98] transition-all duration-200 disabled:opacity-70;
+  background: linear-gradient(135deg, #4F46E5 0%, #6D28D9 100%);
+  box-shadow: 0 4px 14px rgba(79, 70, 229, 0.35);
+}
+
+.auth-submit-btn:hover:not(:disabled) {
+  box-shadow: 0 6px 20px rgba(79, 70, 229, 0.45);
+}
+
+.auth-error {
+  @apply bg-red-50 border border-red-200 text-red-600 text-xs rounded-lg px-3 py-2;
+}
+
+:is(.dark .auth-error) {
+  @apply bg-red-950/30 border-red-800 text-red-400;
 }
 
 .root {
@@ -110,7 +207,7 @@
 }
 
 .root-container {
-  @apply mt-16 flex-1 overflow-auto py-8 lg:mt-0 lg:max-h-screen lg:py-10
+  @apply mt-16 flex-1 overflow-auto py-8 lg:mt-0 lg:max-h-screen lg:py-10;
 }
 
 /* ========================================== TAILWIND STYLES */
@@ -292,25 +389,25 @@
 
   /* Credits Page */
   .credits-list {
-    @apply grid grid-cols-1 gap-6 sm:grid-cols-2 lg:gap-8 xl:grid-cols-3 items-start;
+    @apply grid grid-cols-1 gap-4 sm:gap-6 sm:grid-cols-2 lg:gap-8 xl:grid-cols-3 items-start;
   }
 
   .credits-card {
-    @apply relative rounded-2xl transition-all duration-300 hover:-translate-y-2 list-none;
+    @apply relative rounded-xl sm:rounded-2xl transition-all duration-300 hover:-translate-y-2 list-none;
   }
 
   .credits-card-featured {
-    @apply z-10;
+    @apply z-10 mt-2 sm:mt-0;
   }
 
   .credits-badge {
-    @apply absolute -top-4 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1.5 px-4 py-1.5 rounded-full text-white text-xs font-bold whitespace-nowrap;
+    @apply absolute -top-3.5 sm:-top-4 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1 sm:gap-1.5 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-white text-[11px] sm:text-xs font-bold whitespace-nowrap;
     background: linear-gradient(135deg, #6366f1 0%, #7c3aed 100%);
     box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
   }
 
   .credits-btn-free {
-    @apply w-full rounded-xl py-3 bg-slate-100 dark:bg-slate-800 text-gray-900 dark:text-white font-semibold text-sm hover:bg-slate-200 dark:hover:bg-slate-700 transition-all duration-300 active:scale-[0.98] !important;
+    @apply w-full rounded-xl py-2.5 sm:py-3 bg-slate-100 dark:bg-slate-800 text-gray-900 dark:text-white font-semibold text-xs sm:text-sm hover:bg-slate-200 dark:hover:bg-slate-700 transition-all duration-300 active:scale-[0.98] !important;
   }
 
   /* Profile Page */
@@ -385,7 +482,7 @@
 
   /* Navbar Component */
   .header {
-    @apply flex-between fixed h-16 w-full border-b-4 border-purple-100 dark:border-slate-800 bg-white dark:bg-slate-950 p-5 lg:hidden transition-colors duration-300;
+    @apply flex-between fixed top-0 z-50 h-16 w-full border-b-4 border-purple-100 dark:border-slate-800 bg-white dark:bg-slate-950 p-5 lg:hidden transition-colors duration-300;
   }
 
   .header-nav_elements {
@@ -394,15 +491,16 @@
 
   /* Mobile scrollbar styling */
   .header-nav_elements::-webkit-scrollbar {
-    @apply w-2;
+    width: 0 !important;
+    background: transparent !important;
   }
 
   .header-nav_elements::-webkit-scrollbar-track {
-    @apply bg-gray-100 rounded-full;
+    background: transparent !important;
   }
 
   .header-nav_elements::-webkit-scrollbar-thumb {
-    @apply bg-purple-400 rounded-full;
+    background: transparent !important;
   }
 
   /* Search Component */
@@ -434,15 +532,16 @@
 
   /* Scrollbar styling */
   .sidebar-scroll-container::-webkit-scrollbar {
-    @apply w-2;
+    width: 0 !important;
+    background: transparent !important;
   }
 
   .sidebar-scroll-container::-webkit-scrollbar-track {
-    @apply bg-gray-100 dark:bg-slate-800 rounded-full;
+    background: transparent !important;
   }
 
   .sidebar-scroll-container::-webkit-scrollbar-thumb {
-    @apply bg-purple-400 dark:bg-purple-600 rounded-full hover:bg-purple-500 dark:hover:bg-purple-500 transition-colors;
+    background: transparent !important;
   }
 
   .sidebar-nav_elements {
