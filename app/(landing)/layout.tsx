@@ -1,6 +1,7 @@
 import React from 'react'
 import { Metadata } from 'next'
 import JsonLd from '@/components/shared/JsonLd'
+import { AuthRedirect } from './components/AuthRedirect'
 
 export const metadata: Metadata = {
   title: 'Khizo AI — Free AI Image Editor | Photo Restore, Background Removal & More',
@@ -21,6 +22,7 @@ const LandingLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="min-h-screen">
       <JsonLd />
+      <AuthRedirect />
       {children}
     </div>
   )
