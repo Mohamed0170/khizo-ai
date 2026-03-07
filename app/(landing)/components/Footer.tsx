@@ -197,17 +197,6 @@ export const Footer: React.FC = () => {
           of the Service after changes constitutes acceptance of the modified
           terms.
         </p>
-
-        <h3 className="text-base font-semibold text-slate-900 dark:text-white">
-          10. Contact Us
-        </h3>
-        <p>
-          If you have questions about these Terms, please contact us at{' '}
-          <span className="text-indigo-600 dark:text-indigo-400">
-            support@khizo.ai
-          </span>
-          .
-        </p>
       </Modal>
 
       {/* Privacy Policy Modal */}
