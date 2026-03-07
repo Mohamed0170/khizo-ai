@@ -5,7 +5,6 @@ import { HeroAnimation } from './components/HeroAnimation';
 import { Logo } from './components/Logo';
 import { ArrowRight, Star, ShieldCheck, Zap } from 'lucide-react';
 import Link from 'next/link';
-import { ScrollToTopOnMount } from './components/ScrollToTopOnMount';
 
 // Lazy load heavy sections - only load when user scrolls to them
 const AppDemo = dynamic(() => import('./components/AppDemo').then(m => ({ default: m.AppDemo })), {
@@ -41,7 +40,6 @@ const APP_URL = "/sign-up";
 export default function LandingPage() {
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 selection:bg-indigo-200 dark:selection:bg-indigo-900 selection:text-indigo-900 dark:selection:text-indigo-100 overflow-x-hidden transition-colors duration-300 font-IBMPlex">
-      <ScrollToTopOnMount />
       <Navbar />
 
       {/* Hero Section */}
