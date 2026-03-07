@@ -393,8 +393,8 @@ const SignInPage = () => {
   return (
     <div className="auth-card">
       {logoHeader}
-      <h1 className="text-2xl font-bold text-slate-900 dark:text-white text-center">Welcome back</h1>
-      <p className="text-sm text-slate-500 dark:text-slate-400 text-center mb-6">Sign in to your account to continue</p>
+      <h1 className="text-2xl font-bold text-slate-900 dark:text-white text-center">Sign In to Khizo AI</h1>
+      <p className="text-sm text-slate-500 dark:text-slate-400 text-center mb-6">Access your AI image editing workspace</p>
 
       {/* OAuth Buttons */}
       <div className="flex flex-col gap-3 mb-5">

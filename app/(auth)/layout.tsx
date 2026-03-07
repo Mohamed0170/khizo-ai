@@ -20,10 +20,10 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
             </div>
           </Link>
           <h1 className="text-2xl sm:text-3xl font-bold text-white mb-3 leading-tight">
-            Transform your images<br />with AI magic
+            AI-Powered Image Editing<br />Made Simple
           </h1>
           <p className="text-white/70 text-sm sm:text-base max-w-xs">
-            Restore, enhance, remove backgrounds, and more &mdash; powered by cutting-edge AI.
+            Restore old photos, remove backgrounds, recolor objects, and create stunning visuals &mdash; all powered by advanced AI.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-2">
             {['Image Restore', 'Generative Fill', 'Object Remove', 'Recolor', 'BG Remove'].map((f) => (

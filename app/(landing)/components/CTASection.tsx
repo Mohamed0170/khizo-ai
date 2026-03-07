@@ -39,13 +39,13 @@ export const CTASection: React.FC = () => {
               </div>
 
               <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 text-white leading-tight">
-                Ready to transform
+                Ready to edit images
                 <br />
-                your creative workflow?
+                with the power of AI?
               </h2>
               
               <p className="text-base md:text-lg text-indigo-100/90 mb-10 max-w-2xl mx-auto leading-relaxed">
-                Join thousands of creators, designers, and businesses using Khizo AI to produce stunning visuals in seconds — no design skills required.
+                Join thousands of creators, designers, and businesses using Khizo AI to restore photos, remove backgrounds, and produce stunning visuals in seconds — no design skills required.
               </p>
 
               {/* CTA buttons */}

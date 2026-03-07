@@ -124,7 +124,7 @@ export default function LandingPage() {
 
             <RevealOnScroll delay={800}>
               <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed px-4">
-                The all-in-one AI creative suite. Restore photos, remove objects, and generate new content with a single click.
+                The all-in-one AI image editor. Restore old photos, remove backgrounds &amp; objects, recolor elements, and use generative fill — all for free, no design skills needed.
               </p>
             </RevealOnScroll>
 

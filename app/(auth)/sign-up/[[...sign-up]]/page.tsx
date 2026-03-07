@@ -153,8 +153,8 @@ const SignUpPage = () => {
         <span className="text-xl font-bold tracking-tight text-indigo-600 dark:text-indigo-400">Khizo AI</span>
       </div>
 
-      <h1 className="text-2xl font-bold text-slate-900 dark:text-white text-center">Create your account</h1>
-      <p className="text-sm text-slate-500 dark:text-slate-400 text-center mb-6">Get started with Khizo AI for free</p>
+      <h1 className="text-2xl font-bold text-slate-900 dark:text-white text-center">Create Your Free Account</h1>
+      <p className="text-sm text-slate-500 dark:text-slate-400 text-center mb-6">Start editing images with AI &mdash; 10 free credits included</p>
 
       {/* OAuth Buttons */}
       <div className="flex flex-col gap-3 mb-5">
