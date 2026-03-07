@@ -25,14 +25,14 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL("https://khizo.dev"),
   title: {
-    default: "Khizo AI — Free AI Image Editor | Photo Restore, Background Removal & Generative Fill",
+    default: "Khizo AI — AI Image Editor | Photo Restore, Background Removal & Generative Fill",
     template: "%s | Khizo AI",
   },
   description:
-    "Free AI image editor — restore old photos, remove backgrounds, delete unwanted objects, recolor elements, and use generative fill. Download in PNG, JPG, WEBP, AVIF & more. No design skills needed.",
+    "AI image editor — restore old photos, remove backgrounds, delete unwanted objects, recolor elements, and use generative fill. Download in PNG, JPG, WEBP, AVIF & more. No design skills needed.",
   keywords: [
     "AI image editor",
-    "free AI photo editor",
+    "AI photo editor",
     "image restoration",
     "restore old photos",
     "background removal",
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     "generative fill",
     "AI photo enhancement",
     "photo editing online",
-    "free online image editor",
+    "online image editor",
     "Khizo AI",
     "image download PNG JPG WEBP AVIF",
     "AI background remover",

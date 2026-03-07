@@ -5,7 +5,7 @@ export default function JsonLd() {
     name: "Khizo AI",
     url: "https://khizo.dev",
     description:
-      "Free AI image editor — restore old photos, remove backgrounds, delete objects, recolor elements, and use generative fill.",
+      "AI image editor — restore old photos, remove backgrounds, delete objects, recolor elements, and use generative fill.",
     potentialAction: {
       "@type": "SearchAction",
       target: {
@@ -29,7 +29,7 @@ export default function JsonLd() {
       "@type": "Offer",
       price: "0",
       priceCurrency: "USD",
-      description: "Free tier with 10 credits",
+      description: "Tier with 10 credits",
     },
     featureList: [
       "AI Image Restoration",
