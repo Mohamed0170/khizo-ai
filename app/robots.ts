@@ -5,8 +5,8 @@ export default function robots(): MetadataRoute.Robots {
     rules: [
       {
         userAgent: "*",
-        allow: "/",
-        disallow: ["/api/", "/profile/", "/dashboard/", "/credits/", "/transformations/"],
+        allow: ["/", "/sign-in", "/sign-up", "/transformations/add/"],
+        disallow: ["/api/", "/profile/", "/dashboard/", "/credits/", "/transformations/[id]"],
       },
       {
         userAgent: "Googlebot-Video",

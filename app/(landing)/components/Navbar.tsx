@@ -58,6 +58,16 @@ export const Navbar: React.FC = () => {
 
         {/* Desktop Actions */}
         <div className="hidden md:flex items-center gap-4">
+          <Link href="/#features" className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+            Features
+          </Link>
+          <Link href="/#pricing" className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+            Pricing
+          </Link>
+          <Link href="/#faq" className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+            FAQ
+          </Link>
+
           <button 
             onClick={toggleTheme}
             className="p-2 rounded-full text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors focus:outline-none"
@@ -107,6 +117,27 @@ export const Navbar: React.FC = () => {
       {/* Mobile Menu */}
       {mobileMenuOpen && (
         <div className="md:hidden absolute top-16 left-0 right-0 bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800 p-4 flex flex-col gap-4 shadow-xl animate-fade-in-down">
+          <Link 
+            href="/#features"
+            onClick={() => setMobileMenuOpen(false)}
+            className="w-full text-center py-2 text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 font-medium hover:bg-indigo-50 dark:hover:bg-slate-800 rounded-lg transition-colors"
+          >
+            Features
+          </Link>
+          <Link 
+            href="/#pricing"
+            onClick={() => setMobileMenuOpen(false)}
+            className="w-full text-center py-2 text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 font-medium hover:bg-indigo-50 dark:hover:bg-slate-800 rounded-lg transition-colors"
+          >
+            Pricing
+          </Link>
+          <Link 
+            href="/#faq"
+            onClick={() => setMobileMenuOpen(false)}
+            className="w-full text-center py-2 text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 font-medium hover:bg-indigo-50 dark:hover:bg-slate-800 rounded-lg transition-colors"
+          >
+            FAQ
+          </Link>
           <Link 
             href={APP_URL} 
             className="w-full text-center py-2 text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 font-medium hover:bg-indigo-50 dark:hover:bg-slate-800 rounded-lg transition-colors"

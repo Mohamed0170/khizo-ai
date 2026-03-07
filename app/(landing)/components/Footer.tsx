@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { X } from 'lucide-react';
 import { Logo } from './Logo';
+import Link from 'next/link';
 
 const Modal = ({
   isOpen,
@@ -58,17 +59,50 @@ export const Footer: React.FC = () => {
     <>
       <footer className="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 pt-16 md:pt-20 pb-10 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6 mb-8">
-            <div className="flex items-center gap-2">
-              <Logo className="w-7 h-7" />
-              <span className="font-bold text-xl text-slate-900 dark:text-white">
-                Khizo AI
-              </span>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+            {/* Brand */}
+            <div className="md:col-span-1">
+              <div className="flex items-center gap-2 mb-3">
+                <Logo className="w-7 h-7" />
+                <span className="font-bold text-xl text-slate-900 dark:text-white">Khizo AI</span>
+              </div>
+              <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed max-w-xs">
+                Free AI-powered image editing tools for creators, designers, and businesses.
+              </p>
             </div>
-            <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed max-w-xs text-center md:text-left">
-              Empowering creators with the next generation of artificial
-              intelligence tools.
-            </p>
+
+            {/* AI Tools */}
+            <div>
+              <h3 className="text-sm font-semibold text-slate-900 dark:text-white mb-4">AI Tools</h3>
+              <ul className="space-y-2.5">
+                <li><Link href="/transformations/add/restore" className="text-sm text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Image Restore</Link></li>
+                <li><Link href="/transformations/add/fill" className="text-sm text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Generative Fill</Link></li>
+                <li><Link href="/transformations/add/remove" className="text-sm text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Object Remove</Link></li>
+                <li><Link href="/transformations/add/recolor" className="text-sm text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Object Recolor</Link></li>
+                <li><Link href="/transformations/add/removeBackground" className="text-sm text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Background Remove</Link></li>
+              </ul>
+            </div>
+
+            {/* Quick Links */}
+            <div>
+              <h3 className="text-sm font-semibold text-slate-900 dark:text-white mb-4">Quick Links</h3>
+              <ul className="space-y-2.5">
+                <li><Link href="/#features" className="text-sm text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Features</Link></li>
+                <li><Link href="/#pricing" className="text-sm text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Pricing</Link></li>
+                <li><Link href="/#faq" className="text-sm text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">FAQ</Link></li>
+                <li><Link href="/dashboard" className="text-sm text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Dashboard</Link></li>
+              </ul>
+            </div>
+
+            {/* Account */}
+            <div>
+              <h3 className="text-sm font-semibold text-slate-900 dark:text-white mb-4">Account</h3>
+              <ul className="space-y-2.5">
+                <li><Link href="/sign-in" className="text-sm text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Sign In</Link></li>
+                <li><Link href="/sign-up" className="text-sm text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Create Free Account</Link></li>
+                <li><Link href="/credits" className="text-sm text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Buy Credits</Link></li>
+              </ul>
+            </div>
           </div>
 
           <div className="border-t border-slate-100 dark:border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">

@@ -1,4 +1,21 @@
 export default function JsonLd() {
+  const websiteData = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Khizo AI",
+    url: "https://khizo.dev",
+    description:
+      "Free AI image editor — restore old photos, remove backgrounds, delete objects, recolor elements, and use generative fill.",
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: "https://khizo.dev/dashboard?q={search_term_string}",
+      },
+      "query-input": "required name=search_term_string",
+    },
+  };
+
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "WebApplication",
@@ -28,6 +45,97 @@ export default function JsonLd() {
       name: "Khizo AI",
       url: "https://khizo.dev",
     },
+  };
+
+  const navigationData = {
+    "@context": "https://schema.org",
+    "@type": "SiteNavigationElement",
+    name: [
+      "Home",
+      "Sign In",
+      "Sign Up",
+      "Image Restore",
+      "Generative Fill",
+      "Object Remove",
+      "Object Recolor",
+      "Background Remove",
+      "Pricing",
+    ],
+    url: [
+      "https://khizo.dev",
+      "https://khizo.dev/sign-in",
+      "https://khizo.dev/sign-up",
+      "https://khizo.dev/transformations/add/restore",
+      "https://khizo.dev/transformations/add/fill",
+      "https://khizo.dev/transformations/add/remove",
+      "https://khizo.dev/transformations/add/recolor",
+      "https://khizo.dev/transformations/add/removeBackground",
+      "https://khizo.dev/#pricing",
+    ],
+  };
+
+  const breadcrumbData = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://khizo.dev",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Sign In",
+        item: "https://khizo.dev/sign-in",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: "Sign Up",
+        item: "https://khizo.dev/sign-up",
+      },
+      {
+        "@type": "ListItem",
+        position: 4,
+        name: "Image Restore",
+        item: "https://khizo.dev/transformations/add/restore",
+      },
+      {
+        "@type": "ListItem",
+        position: 5,
+        name: "Generative Fill",
+        item: "https://khizo.dev/transformations/add/fill",
+      },
+      {
+        "@type": "ListItem",
+        position: 6,
+        name: "Object Remove",
+        item: "https://khizo.dev/transformations/add/remove",
+      },
+      {
+        "@type": "ListItem",
+        position: 7,
+        name: "Object Recolor",
+        item: "https://khizo.dev/transformations/add/recolor",
+      },
+      {
+        "@type": "ListItem",
+        position: 8,
+        name: "Background Remove",
+        item: "https://khizo.dev/transformations/add/removeBackground",
+      },
+    ],
+  };
+
+  const organizationData = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Khizo AI",
+    url: "https://khizo.dev",
+    logo: "https://khizo.dev/icon.svg",
+    sameAs: [],
   };
 
   const faqData = {
@@ -65,7 +173,23 @@ export default function JsonLd() {
     <>
       <script
         type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteData) }}
+      />
+      <script
+        type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(navigationData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationData) }}
       />
       <script
         type="application/ld+json"
