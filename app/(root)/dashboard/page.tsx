@@ -48,16 +48,16 @@ const Dashboard = async ({ searchParams }: SearchParamProps) => {
           <div className="home-shape home-shape-3" />
         </div>
 
-        <h1 className="home-heading">
+        <h1 className="home-heading animate-fadeInUp">
           Unleash Your Creative Vision with Khizo AI
         </h1>
-        <p className="text-white/70 text-sm md:text-base mt-1 max-w-md text-center">
+        <p className="text-white/70 text-sm md:text-base mt-1 max-w-md text-center animate-fadeInUp stagger-2">
           Transform your images with powerful AI tools
         </p>
 
         <ul className="flex-center w-full gap-6 sm:gap-10 md:gap-16 lg:gap-20 mt-4 flex-wrap">
-          {navLinks.slice(1, 5).map((link) => (
-            <li key={link.route}>
+          {navLinks.slice(1, 5).map((link, index) => (
+            <li key={link.route} className={`animate-fadeInUp stagger-${index + 3}`}>
               <Link
                 href={link.route}
                 className="home-tool-link group"
@@ -73,12 +73,14 @@ const Dashboard = async ({ searchParams }: SearchParamProps) => {
       </section>
 
       <section className="sm:mt-12">
-        <Collection 
-          hasSearch={true}
-          images={images?.data}
-          totalPages={images?.totalPage}
-          page={page}
-        />
+        <Suspense fallback={null}>
+          <Collection 
+            hasSearch={true}
+            images={images?.data}
+            totalPages={images?.totalPage}
+            page={page}
+          />
+        </Suspense>
       </section>
     </>
   )

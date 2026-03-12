@@ -19,6 +19,7 @@ const CreditSync = ({ buyerId }: { buyerId: string }) => {
     if (!success || hasSynced.current || !buyerId) return;
 
     hasSynced.current = true;
+    let cancelled = false;
     setIsSyncing(true);
 
     toast({
@@ -29,9 +30,11 @@ const CreditSync = ({ buyerId }: { buyerId: string }) => {
     });
 
     const doSync = async (attempt = 1): Promise<void> => {
+      if (cancelled) return;
       try {
         const result = await syncCredits(buyerId);
 
+        if (cancelled) return;
         if (result.creditsAdded && result.creditsAdded > 0) {
           setIsSyncing(false);
           toast({
@@ -53,6 +56,7 @@ const CreditSync = ({ buyerId }: { buyerId: string }) => {
           window.location.href = url.toString();
         }
       } catch {
+        if (cancelled) return;
         if (attempt < 3) {
           await new Promise(r => setTimeout(r, 1500));
           return doSync(attempt + 1);
@@ -62,7 +66,10 @@ const CreditSync = ({ buyerId }: { buyerId: string }) => {
     };
 
     doSync(1);
-  }, [searchParams, buyerId, toast]);
+
+    return () => { cancelled = true; };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchParams, buyerId]);
 
   if (!isSyncing) return null;
 

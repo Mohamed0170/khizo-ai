@@ -47,7 +47,7 @@ export async function updateImage({ image, userId, path }: UpdateImageParams) {
 
     const imageToUpdate = await Image.findById(image._id);
 
-    if (!imageToUpdate || imageToUpdate.author.toHexString() !== userId) {
+    if (!imageToUpdate || imageToUpdate.author.toString() !== userId) {
       throw new Error("Unauthorized or image not found");
     }
 
@@ -75,9 +75,9 @@ export async function deleteImage(imageId: string) {
   } catch (error) {
     console.error("Error deleting image:", error);
     throw error;
-  } finally{
-    redirect('/')
   }
+
+  redirect('/');
 }
 
 // GET IMAGE

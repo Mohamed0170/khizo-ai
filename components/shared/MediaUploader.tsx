@@ -118,7 +118,7 @@ const MediaUploader = ({
     [onValueChange, setImage, toast]
   );
 
-  const validateFile = (file: File): boolean => {
+  const validateFile = useCallback((file: File): boolean => {
     if (!ACCEPTED_TYPES.includes(file.type)) {
       toast({
         title: "Invalid file type",
@@ -138,15 +138,15 @@ const MediaUploader = ({
       return false;
     }
     return true;
-  };
+  }, [toast]);
 
-  const handleFileSelect = (file: File) => {
+  const handleFileSelect = useCallback((file: File) => {
     if (!validateFile(file)) return;
     const reader = new FileReader();
     reader.onload = () => setPreview(reader.result as string);
     reader.readAsDataURL(file);
     uploadToCloudinary(file);
-  };
+  }, [validateFile, uploadToCloudinary]);
 
   const handleDrop = useCallback(
     (e: React.DragEvent) => {
@@ -155,8 +155,7 @@ const MediaUploader = ({
       const file = e.dataTransfer.files[0];
       if (file) handleFileSelect(file);
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [uploadToCloudinary]
+    [handleFileSelect]
   );
 
   const handleDragOver = (e: React.DragEvent) => {

@@ -15,7 +15,6 @@ const bypassRoutes = [
   "/twitter-image",
   "/favicon",
   "/icon",
-  "/transformations/add",
 ];
 
 function shouldBypass(pathname: string): boolean {

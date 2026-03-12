@@ -33,15 +33,14 @@ const Checkout = ({
       });
 
       // Automatically sync credits after successful payment redirect
+      let cancelled = false;
       const doSync = async () => {
-        if (isSyncing) return;
+        if (cancelled) return;
         setIsSyncing(true);
         try {
-          console.log("Syncing credits for buyer:", buyerId);
           const result = await syncCredits(buyerId);
-          console.log("Sync result:", result);
 
-          if (result.creditsAdded && result.creditsAdded > 0) {
+          if (!cancelled && result.creditsAdded && result.creditsAdded > 0) {
             toast({
               title: "Credits Added!",
               description: `${result.creditsAdded} credits have been added to your account`,
@@ -54,12 +53,13 @@ const Checkout = ({
         } catch (err) {
           console.error("Error syncing credits:", err);
         } finally {
-          setIsSyncing(false);
+          if (!cancelled) setIsSyncing(false);
         }
       };
 
       // Wait a moment for webhook to process first, then sync as fallback
-      setTimeout(doSync, 3000);
+      const timer = setTimeout(doSync, 3000);
+      return () => { cancelled = true; clearTimeout(timer); };
     }
 
     if (query.get("canceled")) {
@@ -70,7 +70,8 @@ const Checkout = ({
         className: "error-toast",
       });
     }
-  }, [toast, buyerId]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [buyerId]);
 
   const onCheckout = async () => {
     const transaction = {

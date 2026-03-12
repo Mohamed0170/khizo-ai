@@ -36,17 +36,18 @@ export const Search = () => {
   }, [router, searchParams, query]);
 
   return (
-    <div className="search">
+    <div className="search group">
       <Image
         src="/assets/icons/search.svg"
         alt="search"
         width={24}
         height={24}
+        className="transition-transform duration-300 group-focus-within:scale-110 group-focus-within:opacity-100 opacity-60"
       />
 
       <Input
         className="search-field"
-        placeholder="Search"
+        placeholder="Search your images..."
         onChange={(e) => setQuery(e.target.value)}
       />
     </div>

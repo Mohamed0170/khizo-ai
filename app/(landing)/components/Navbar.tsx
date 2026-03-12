@@ -8,6 +8,7 @@ import Link from 'next/link';
 const APP_URL = "/sign-in";
 
 export const Navbar: React.FC = () => {
+  const [mounted, setMounted] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isDark, setIsDark] = useState(false);
@@ -17,6 +18,7 @@ export const Navbar: React.FC = () => {
       setIsScrolled(window.scrollY > 20);
     };
     window.addEventListener('scroll', handleScroll);
+    handleScroll(); // check initial scroll position
     
     if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       setIsDark(true);
@@ -25,6 +27,8 @@ export const Navbar: React.FC = () => {
       setIsDark(false);
       document.documentElement.classList.remove('dark');
     }
+
+    setMounted(true);
 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -59,11 +63,14 @@ export const Navbar: React.FC = () => {
         {/* Desktop Actions */}
           <div className="hidden md:flex items-center gap-4">
             <button 
-              onClick={toggleTheme}
+              onClick={mounted ? toggleTheme : undefined}
               className="p-2 rounded-full text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors focus:outline-none"
               aria-label="Toggle Dark Mode"
+              suppressHydrationWarning
             >
-              {isDark ? <Sun size={20} /> : <Moon size={20} />}
+              <span suppressHydrationWarning>
+                {mounted ? (isDark ? <Sun size={20} /> : <Moon size={20} />) : <Moon size={20} />}
+              </span>
             </button>
             <Link 
               href={APP_URL}
@@ -87,10 +94,13 @@ export const Navbar: React.FC = () => {
         {/* Mobile Menu Button */}
         <div className="flex items-center gap-4 md:hidden">
           <button 
-            onClick={toggleTheme}
+            onClick={mounted ? toggleTheme : undefined}
             className="p-2 rounded-full text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
+            suppressHydrationWarning
           >
-            {isDark ? <Sun size={20} /> : <Moon size={20} />}
+            <span suppressHydrationWarning>
+              {mounted ? (isDark ? <Sun size={20} /> : <Moon size={20} />) : <Moon size={20} />}
+            </span>
           </button>
 
           <button 

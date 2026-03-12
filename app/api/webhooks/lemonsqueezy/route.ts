@@ -47,14 +47,14 @@ export async function POST(request: Request) {
 
     if (hmac !== signature) {
       console.error("LemonSqueezy Webhook: Signature mismatch!");
-      console.error("Expected:", hmac.substring(0, 20) + "...");
-      console.error("Received:", signature.substring(0, 20) + "...");
-      // Return 200 to prevent retries with bad secret, but don't process
-      return NextResponse.json({ message: "Invalid signature" }, { status: 200 });
+      return NextResponse.json({ message: "Invalid signature" }, { status: 401 });
     }
     console.log("Webhook signature verified ✓");
+  } else if (secret && !signature) {
+    console.error("LemonSqueezy Webhook: Missing signature header");
+    return NextResponse.json({ message: "Missing signature" }, { status: 401 });
   } else {
-    console.warn("Webhook: No signature or no secret - skipping verification");
+    console.warn("Webhook: No secret configured - skipping verification");
   }
 
   let event;

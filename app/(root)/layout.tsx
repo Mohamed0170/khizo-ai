@@ -9,7 +9,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       <MobileNav />
 
       <div className="root-container">
-        <div className="wrapper">
+        <div className="wrapper page-transition">
           {children}
         </div>
       </div>

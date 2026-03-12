@@ -69,6 +69,9 @@ declare type Transformations = {
     multiple?: boolean;
   };
   removeBackground?: boolean;
+  improve?: boolean | string;
+  sharpen?: boolean | string;
+  rawTransformations?: string[];
 };
 
 // ====== TRANSACTION PARAMS

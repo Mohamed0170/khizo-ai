@@ -123,8 +123,16 @@ export const transformationTypes = {
   restore: {
     type: "restore",
     title: "Restore Image",
-    subTitle: "Refine images by removing noise and imperfections",
-    config: { restore: true },
+    subTitle: "Restore old photos, remove cracks, colorize and enhance with AI",
+    config: {
+      restore: true,
+      rawTransformations: [
+        "e_gen_restore",
+        "e_gen_restore",
+        "e_improve:outdoor",
+        "e_sharpen:70"
+      ]
+    },
     icon: "image.svg",
   },
   removeBackground: {

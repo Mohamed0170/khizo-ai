@@ -48,18 +48,18 @@ export const Collection = ({
   return (
     <>
       <div className="collection-heading">
-        <h2 className="h2-bold text-dark-600 dark:text-white">Recent Edits</h2>
+        <h2 className="h2-bold bg-gradient-to-r from-gray-900 via-indigo-900 to-gray-900 dark:from-white dark:via-indigo-200 dark:to-white bg-clip-text text-transparent">Recent Edits</h2>
         {hasSearch && <Search />}
       </div>
 
       {images.length > 0 ? (
         <ul className="collection-list">
-          {images.map((image) => (
-            <Card image={image} key={String(image._id)} />
+          {images.map((image, index) => (
+            <Card image={image} key={String(image._id)} index={index} />
           ))}
         </ul>
       ) : (
-        <div className="collection-empty">
+        <div className="collection-empty animate-scaleFadeIn">
           <div className="flex flex-col items-center gap-4">
             {/* Placeholder image icon */}
             <div className="relative w-28 h-28 flex items-center justify-center">
@@ -69,7 +69,7 @@ export const Collection = ({
                 viewBox="0 0 80 80"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                className="text-gray-300 dark:text-slate-600"
+                className="text-indigo-200 dark:text-slate-600"
               >
                 <rect x="8" y="12" width="64" height="52" rx="6" stroke="currentColor" strokeWidth="2.5" fill="none" />
                 <circle cx="28" cy="32" r="6" stroke="currentColor" strokeWidth="2.5" fill="none" />
@@ -116,34 +116,39 @@ export const Collection = ({
   );
 };
 
-const Card = ({ image }: { image: IImage }) => {
+const Card = ({ image, index = 0 }: { image: IImage; index?: number }) => {
   return (
-    <li>
-      <Link href={`/transformations/${image._id}`} className="collection-card">
-        <CldImage
-          src={image.publicId}
-          alt={image.title}
-          width={image.width}
-          height={image.height}
-          {...image.config}
-          loading="lazy"
-          className="h-52 w-full rounded-[10px] object-cover"
-          sizes="(max-width: 767px) 100vw, (max-width: 1279px) 50vw, 33vw"
-        />
+    <li className="animate-fadeInUp" style={{ animationDelay: `${index * 0.08}s` }}>
+      <Link href={`/transformations/${image._id}`} className="collection-card group">
+        <div className="overflow-hidden rounded-[12px]">
+          <CldImage
+            src={image.publicId}
+            alt={image.title}
+            width={image.width}
+            height={image.height}
+            {...image.config}
+            loading="lazy"
+            className="h-52 w-full rounded-[12px] object-cover transition-transform duration-500 group-hover:scale-105"
+            sizes="(max-width: 767px) 100vw, (max-width: 1279px) 50vw, 33vw"
+          />
+        </div>
         <div className="flex-between">
-          <p className="p-20-semibold mr-3 line-clamp-1 text-dark-600">
+          <p className="p-20-semibold mr-3 line-clamp-1 text-dark-600 dark:text-slate-200 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors duration-300">
             {image.title}
           </p>
-          <Image
-            src={`/assets/icons/${
-              transformationTypes[
-                image.transformationType as TransformationTypeKey
-              ].icon
-            }`}
-            alt={image.title}
-            width={24}
-            height={24}
-          />
+          {transformationTypes[image.transformationType as TransformationTypeKey]?.icon && (
+            <Image
+              src={`/assets/icons/${
+                transformationTypes[
+                  image.transformationType as TransformationTypeKey
+                ].icon
+              }`}
+              alt={image.title}
+              width={24}
+              height={24}
+              className="transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12"
+            />
+          )}
         </div>
       </Link>
     </li>

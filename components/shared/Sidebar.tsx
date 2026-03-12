@@ -15,9 +15,9 @@ const Sidebar = () => {
     <aside className="sidebar">
       <div className="flex size-full flex-col gap-4">
         {/* Logo */}
-        <Link href="/dashboard" className="sidebar-logo">
+        <Link href="/dashboard" className="sidebar-logo group">
           <svg 
-            className="w-8 h-8 md:w-9 md:h-9 flex-shrink-0" 
+            className="w-8 h-8 md:w-9 md:h-9 flex-shrink-0 transition-transform duration-500 group-hover:rotate-180" 
             viewBox="0 0 32 32" 
             fill="none" 
             xmlns="http://www.w3.org/2000/svg"
@@ -33,7 +33,7 @@ const Sidebar = () => {
               <rect x="12" y="-4" width="8" height="40" rx="2" transform="rotate(-45 16 16)" />
             </g>
           </svg>
-          <span className="font-bold text-xl md:text-2xl tracking-tight text-indigo-600 dark:text-indigo-400">Khizo AI</span>
+          <span className="font-bold text-xl md:text-2xl tracking-tight bg-gradient-to-r from-indigo-600 to-violet-600 dark:from-indigo-400 dark:to-violet-400 bg-clip-text text-transparent">Khizo AI</span>
         </Link>
 
         <nav className="sidebar-nav">
@@ -41,20 +41,20 @@ const Sidebar = () => {
             <SignedIn>
               {/* Main nav links */}
               <ul className="sidebar-nav_elements">
-                {navLinks.slice(0, 6).map((link) => {
+                {navLinks.slice(0, 6).map((link, index) => {
                   const isActive = link.route === pathname
 
                   return (
-                    <li key={link.route} className={`sidebar-nav_element group ${
+                    <li key={link.route} className={`sidebar-nav_element group animate-slideInLeft ${
                       isActive ? 'sidebar-nav_active' : 'text-gray-600 dark:text-gray-300'
-                    }`}>
+                    }`} style={{ animationDelay: `${index * 0.05}s` }}>
                       <Link className="sidebar-link" href={link.route}>
                         <Image 
                           src={link.icon}
                           alt="logo"
                           width={24}
                           height={24}
-                          className={`${isActive ? 'brightness-200' : 'dark:invert'}`}
+                          className={`transition-all duration-300 ${isActive ? 'brightness-200 scale-110' : 'dark:invert group-hover:scale-110'}`}
                         />
                         {link.label}
                       </Link>
@@ -65,20 +65,20 @@ const Sidebar = () => {
 
               {/* Bottom nav links */}
               <ul className="sidebar-nav_elements">
-                {navLinks.slice(6).map((link) => {
+                {navLinks.slice(6).map((link, index) => {
                   const isActive = link.route === pathname
 
                   return (
-                    <li key={link.route} className={`sidebar-nav_element group ${
+                    <li key={link.route} className={`sidebar-nav_element group animate-slideInLeft ${
                       isActive ? 'sidebar-nav_active' : 'text-gray-600 dark:text-gray-300'
-                    }`}>
+                    }`} style={{ animationDelay: `${(index + 6) * 0.05}s` }}>
                       <Link className="sidebar-link" href={link.route}>
                         <Image 
                           src={link.icon}
                           alt="logo"
                           width={24}
                           height={24}
-                          className={`${isActive ? 'brightness-200' : 'dark:invert'}`}
+                          className={`transition-all duration-300 ${isActive ? 'brightness-200 scale-110' : 'dark:invert group-hover:scale-110'}`}
                         />
                         {link.label}
                       </Link>

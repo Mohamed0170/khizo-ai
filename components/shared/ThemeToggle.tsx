@@ -4,16 +4,16 @@ import { useState, useEffect } from "react";
 import { Sun, Moon } from "lucide-react";
 
 const ThemeToggle = () => {
+  const [mounted, setMounted] = useState(false);
   const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
-    if (localStorage.theme === "dark") {
-      setIsDark(true);
-      document.documentElement.classList.add("dark");
-    } else {
-      setIsDark(false);
-      document.documentElement.classList.remove("dark");
-    }
+    const dark =
+      localStorage.theme === "dark" ||
+      (!localStorage.theme &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches);
+    setIsDark(dark);
+    setMounted(true);
   }, []);
 
   const toggleTheme = () => {
@@ -28,15 +28,19 @@ const ThemeToggle = () => {
     }
   };
 
+  // Always render the same structure — only the icon/label differ after mount
   return (
     <button
-      onClick={toggleTheme}
-      className="flex items-center gap-3 p-4 w-full rounded-full text-gray-700 dark:text-gray-300 hover:bg-purple-100 dark:hover:bg-slate-800 transition-all"
+      onClick={mounted ? toggleTheme : undefined}
+      className="flex items-center gap-3 p-4 w-full rounded-xl text-gray-700 dark:text-gray-300 hover:bg-indigo-50 dark:hover:bg-slate-800/80 transition-all duration-300 group"
       aria-label="Toggle Dark Mode"
+      suppressHydrationWarning
     >
-      {isDark ? <Sun size={24} /> : <Moon size={24} />}
-      <span className="p-16-semibold">
-        {isDark ? "Light Mode" : "Dark Mode"}
+      <span className="transition-transform duration-500 group-hover:rotate-180" suppressHydrationWarning>
+        {mounted ? (isDark ? <Sun size={24} /> : <Moon size={24} />) : <Moon size={24} />}
+      </span>
+      <span className="p-16-semibold" suppressHydrationWarning>
+        {mounted ? (isDark ? "Light Mode" : "Dark Mode") : "Dark Mode"}
       </span>
     </button>
   );

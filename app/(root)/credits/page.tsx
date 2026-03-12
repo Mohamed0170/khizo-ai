@@ -29,9 +29,9 @@ const Credits = async () => {
   return (
     <>
       {/* Header */}
-      <div className="mb-6 sm:mb-10 md:mb-14">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white tracking-tight">
-          Buy{' '}
+      <div className="mb-6 sm:mb-10 md:mb-14 animate-fadeInUp">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight">
+          <span className="bg-gradient-to-r from-gray-900 via-indigo-900 to-gray-900 dark:from-white dark:via-indigo-200 dark:to-white bg-clip-text text-transparent">Buy</span>{' '}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600 dark:from-indigo-400 dark:to-violet-400">
             Credits
           </span>
